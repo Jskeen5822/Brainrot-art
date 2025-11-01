@@ -679,6 +679,48 @@ body::after {
     }
 }
 
+body.low-power {
+    background: linear-gradient(135deg, #04070f 0%, #0e1a2c 100%);
+}
+
+body.low-power::before,
+body.low-power::after {
+    display: none;
+}
+
+body.low-power .ambient,
+body.low-power .glow {
+    display: none;
+}
+
+body.low-power .frame {
+    background: rgba(14, 24, 42, 0.92);
+    backdrop-filter: none;
+    border-color: rgba(109, 227, 255, 0.08);
+    box-shadow: 0 12px 36px rgba(10, 14, 34, 0.55);
+}
+
+body.low-power .frame::before,
+body.low-power .status-bar::after {
+    display: none;
+}
+
+body.low-power .side-card {
+    backdrop-filter: none;
+    background: rgba(12, 18, 32, 0.9);
+    box-shadow: 0 8px 24px rgba(5, 10, 22, 0.55);
+}
+
+body.low-power .post {
+    backdrop-filter: none;
+    background: rgba(12, 20, 34, 0.94);
+    box-shadow: 0 10px 26px rgba(5, 10, 26, 0.45);
+}
+
+body.low-power .post::after {
+    opacity: 0.12;
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

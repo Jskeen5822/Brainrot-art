@@ -2,10 +2,43 @@
     "use strict";
 
     const CONFIG = {
-    animationSpeed: 0.45,
+        animationSpeed: 0.45,
         initialPostCount: 18,
         tickerIntervalMs: 7000
     };
+
+    function detectLowPowerMode() {
+        if (typeof navigator === "undefined") {
+            return false;
+        }
+        const userAgent = navigator.userAgent ? navigator.userAgent.toLowerCase() : "";
+        const hardwareCores = typeof navigator.hardwareConcurrency === "number" ? navigator.hardwareConcurrency : 8;
+        const deviceMemory = typeof navigator.deviceMemory === "number" ? navigator.deviceMemory : 8;
+
+        if (userAgent.includes("raspberry") || userAgent.includes(" pi")) {
+            return true;
+        }
+
+        if (userAgent.includes("linux") && (userAgent.includes("arm") || userAgent.includes("aarch"))) {
+            return true;
+        }
+
+        if (hardwareCores <= 4 && deviceMemory <= 4) {
+            return true;
+        }
+
+        return false;
+    }
+
+    const LOW_POWER_MODE = detectLowPowerMode();
+
+    if (LOW_POWER_MODE) {
+        CONFIG.animationSpeed = 0.62;
+        CONFIG.initialPostCount = 12;
+        CONFIG.tickerIntervalMs = Math.round(CONFIG.tickerIntervalMs * 1.45);
+    }
+
+    const INTERVAL_SCALE = LOW_POWER_MODE ? 1.45 : 1;
 
     const TEXT_SNIPPETS = {
         openers: [
@@ -1381,27 +1414,28 @@
 
             if (this.chaosBar && this.chaosLabel) {
                 this.updateChaos();
-                window.setInterval(() => this.updateChaos(), 9000);
+                window.setInterval(() => this.updateChaos(), Math.round(9000 * INTERVAL_SCALE));
             }
 
             if (this.ritualList) {
                 this.updateRituals();
-                window.setInterval(() => this.updateRituals(), 16000);
+                window.setInterval(() => this.updateRituals(), Math.round(16000 * INTERVAL_SCALE));
             }
 
             if (this.briefingList) {
                 this.updateBriefings();
-                window.setInterval(() => this.updateBriefings(), 20000);
+                window.setInterval(() => this.updateBriefings(), Math.round(20000 * INTERVAL_SCALE));
             }
 
             if (this.forecastList) {
                 this.updateForecast();
-                window.setInterval(() => this.updateForecast(), 18000);
+                window.setInterval(() => this.updateForecast(), Math.round(18000 * INTERVAL_SCALE));
             }
 
             if (this.chatStream) {
                 this.seedChat();
-                this.chatTimer = window.setInterval(() => this.pushChat(false), 5000);
+                const chatInterval = Math.round(5000 * INTERVAL_SCALE);
+                this.chatTimer = window.setInterval(() => this.pushChat(false), chatInterval);
             }
         }
 
@@ -1669,6 +1703,10 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+        if (LOW_POWER_MODE) {
+            document.body.classList.add("low-power");
+        }
+
         const feedElement = document.getElementById("feed");
         const doomscroll = new Doomscroll(feedElement);
         doomscroll.init();
