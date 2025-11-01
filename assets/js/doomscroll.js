@@ -2,7 +2,7 @@
     "use strict";
 
     const CONFIG = {
-        animationSpeed: 0.45,
+    animationSpeed: 0.45,
         initialPostCount: 18,
         tickerIntervalMs: 7000
     };
@@ -1165,11 +1165,12 @@
         constructor(feedElement) {
             this.feed = feedElement;
             this.translateY = 0;
-            this.speed = CONFIG.animationSpeed;
+            this.speed = CONFIG.animationSpeed * 60;
             this.gap = 32;
             this.running = false;
             this.frameRequest = null;
             this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
+            this.lastTimestamp = null;
         }
 
         init() {
@@ -1187,7 +1188,7 @@
 
             document.addEventListener("visibilitychange", this.handleVisibilityChange);
             this.running = true;
-            this.tick();
+            this.frameRequest = window.requestAnimationFrame((timestamp) => this.tick(timestamp));
         }
 
         handleVisibilityChange() {
@@ -1204,6 +1205,7 @@
                 window.cancelAnimationFrame(this.frameRequest);
                 this.frameRequest = null;
             }
+            this.lastTimestamp = null;
         }
 
         resume() {
@@ -1211,15 +1213,29 @@
                 return;
             }
             this.running = true;
-            this.tick();
+            this.lastTimestamp = null;
+            this.frameRequest = window.requestAnimationFrame((timestamp) => this.tick(timestamp));
         }
 
-        tick() {
+        tick(timestamp) {
             if (!this.running) {
                 return;
             }
 
-            this.translateY -= this.speed;
+            if (typeof timestamp !== "number") {
+                this.frameRequest = window.requestAnimationFrame((nextTimestamp) => this.tick(nextTimestamp));
+                return;
+            }
+
+            if (this.lastTimestamp === null) {
+                this.lastTimestamp = timestamp;
+            }
+
+            const deltaSeconds = (timestamp - this.lastTimestamp) / 1000;
+            this.lastTimestamp = timestamp;
+
+            const distance = this.speed * deltaSeconds;
+            this.translateY -= distance;
             this.feed.style.transform = "translateY(" + this.translateY + "px)";
 
             const firstPost = this.feed.firstElementChild;
@@ -1234,7 +1250,7 @@
                 }
             }
 
-            this.frameRequest = window.requestAnimationFrame(() => this.tick());
+            this.frameRequest = window.requestAnimationFrame((nextTimestamp) => this.tick(nextTimestamp));
         }
 
         createPost() {
