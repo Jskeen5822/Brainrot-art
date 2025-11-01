@@ -4,9 +4,9 @@ Infinite doomscroll brainrot feed designed for a Raspberry Pi 5 kiosk display. T
 
 ## Files
 - `index.html` entry point for the fullscreen feed.
-- `assets/css/styles.css` layout, neon vibes, and animation styling.
+- `assets/css/styles.css` layout and kiosk-friendly static styling.
 - `assets/js/doomscroll.js` generates posts, metrics, ticker headlines, and drives the infinite scroll loop.
-- `assets/media/*.svg` contains original brainrot mascots (smiling nugget, sigma cat, ohio portal) shown in the feed.
+- `assets/media/` contains the meme art rotated into the feed.
 
 ## Run locally
 1. From the project folder start a quick static server: `python -m http.server 8000`.

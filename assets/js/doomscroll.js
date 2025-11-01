@@ -1,11 +1,12 @@
 (function () {
     "use strict";
 
-    const CONFIG = {
-        animationSpeed: 0.45,
-        initialPostCount: 18,
-        tickerIntervalMs: 7000
-    };
+    const BASE_SCROLL_SPEED = 0.45;
+    const BASE_INITIAL_POST_COUNT = 18;
+    const BASE_TICKER_INTERVAL_MS = 7000;
+    const LOW_POWER_SCROLL_SPEED = 0.62;
+    const LOW_POWER_INITIAL_POST_COUNT = 12;
+    const LOW_POWER_INTERVAL_SCALE = 1.45;
 
     function detectLowPowerMode() {
         if (typeof navigator === "undefined") {
@@ -31,14 +32,10 @@
     }
 
     const LOW_POWER_MODE = detectLowPowerMode();
-
-    if (LOW_POWER_MODE) {
-        CONFIG.animationSpeed = 0.62;
-        CONFIG.initialPostCount = 12;
-        CONFIG.tickerIntervalMs = Math.round(CONFIG.tickerIntervalMs * 1.45);
-    }
-
-    const INTERVAL_SCALE = LOW_POWER_MODE ? 1.45 : 1;
+    const INTERVAL_SCALE = LOW_POWER_MODE ? LOW_POWER_INTERVAL_SCALE : 1;
+    const SCROLL_SPEED = (LOW_POWER_MODE ? LOW_POWER_SCROLL_SPEED : BASE_SCROLL_SPEED) * 60;
+    const INITIAL_POST_COUNT = LOW_POWER_MODE ? LOW_POWER_INITIAL_POST_COUNT : BASE_INITIAL_POST_COUNT;
+    const TICKER_INTERVAL_MS = LOW_POWER_MODE ? Math.round(BASE_TICKER_INTERVAL_MS * INTERVAL_SCALE) : BASE_TICKER_INTERVAL_MS;
 
     const TEXT_SNIPPETS = {
         openers: [
@@ -83,7 +80,13 @@
             "<strong>Breaking Brainwave</strong>",
             "<strong>Sigma Intel Drop</strong>",
             "<strong>NPC Transmission</strong>",
-            "<strong>Rizz Alert</strong>"
+            "<strong>Rizz Alert</strong>",
+            "<strong>Chaos Advisory</strong>",
+            "<strong>Campus Lore Drop</strong>",
+            "<strong>Brainwave Bulletin</strong>",
+            "<strong>NPC Alert</strong>",
+            "<strong>Sigma Situation</strong>",
+            "<strong>Doomscroll Dispatch</strong>"
         ]
     };
 
@@ -113,6 +116,66 @@
                         "Rumor says the banana doubles as security detail whenever the ape drops hot gossip."
                     ],
                     ticker: "Fruit briefing interrupts regular doomscroll with potassium PSA"
+                },
+                {
+                    caption: "Ape hosts midnight potassium power hour",
+                    tag: "Potassium Prophet",
+                    bodyLines: [
+                        "Lecture hall packed once rumors spread he hands out honorary doctorates in banana science.",
+                        "Bio majors filming the glow up for a documentary titled 'We Are So Back (Again)'.",
+                        "Legend says peeling along in sync unlocks premium rizz multipliers for finals week."
+                    ],
+                    ticker: "Potassium prophet ape sells out midnight amphitheater session"
+                },
+                {
+                    caption: "Banana host mediates group project ceasefire",
+                    tag: "Appeasement Peel",
+                    bodyLines: [
+                        "Three rival teams finally agreed on slide aesthetics after the fruit lowered the vibe index.",
+                        "Marketing majors swear the banana's keynote outclassed every guest speaker this semester.",
+                        "Rumor says placing the banana on your laptop prevents all Canvas crashes for 24 hours."
+                    ],
+                    ticker: "Appeasement peel summit resolves sixty percent of campus beef overnight"
+                },
+                {
+                    caption: "Ape debuts banana-powered wellness retreat",
+                    tag: "Zen Peel",
+                    bodyLines: [
+                        "Participants chanted 'potassium peace' while slow-peeling for maximum aura alignment.",
+                        "Wellness center now outsourcing half their mindfulness classes to this fruit-based guru.",
+                        "Legend says snagging a peel scrap grants immunity from passive-aggressive group chats."
+                    ],
+                    ticker: "Zen peel retreat books out Court Street studio for the month"
+                },
+                {
+                    caption: "Banana beats professor in campus rap battle",
+                    tag: "Syllabars",
+                    bodyLines: [
+                        "Crowd lost it when the peel rhymed 'midterm' with 'curveball brainworm' flawlessly.",
+                        "English department issued a press release acknowledging the fruit as adjunct faculty now.",
+                        "Rumor says the ape's mic drop caused the projector to auto-download hype playlists."
+                    ],
+                    ticker: "Syllabars banana bars trend harder than syllabus week rants"
+                },
+                {
+                    caption: "Potassium think tank invades the quad",
+                    tag: "Banana Braintrust",
+                    bodyLines: [
+                        "Whiteboards everywhere filled with diagrams proving bananas the optimal study partner.",
+                        "Economics majors calculating the peel-to-grade ROI like it is a Fortune 500 case study.",
+                        "Legend says joining the brainstorm unlocks unlimited snack access from vending machine 7A."
+                    ],
+                    ticker: "Banana braintrust publishes 43-page manifesto on campus hustle hydration"
+                },
+                {
+                    caption: "Ape launches banana-backed cryptocurrency",
+                    tag: "ApeX Coin",
+                    bodyLines: [
+                        "Business college packed the lecture hall to hear about the world's first potassium-backed token.",
+                        "Compliance office begged them to stop calling it 'proof-of-peel' but nobody listened.",
+                        "Rumor says staking five bananas grants access to an exclusive hype discord hidden in Alden."
+                    ],
+                    ticker: "ApeX coin peel paper sparks frenzy among finance minors"
                 }
             ]
         },
@@ -141,6 +204,66 @@
                         "Rumor says the bird only leaves if offered a courtside latte with extra sunflower foam."
                     ],
                     ticker: "Rally gremlin bird commandeers the campus tennis schedule"
+                },
+                {
+                    caption: "Bird announces racket-free tennis philosophy",
+                    tag: "Zen Volley",
+                    bodyLines: [
+                        "Sports psych majors now citing the tiny coach in dissertations about flow state chirping.",
+                        "Equipment room released a memo titled 'please stop bringing gifts to the bird'.",
+                        "Legend says mimicking its stance during exams boosts focus by 15 percent."
+                    ],
+                    ticker: "Zen volley bird hosts mindfulness warmups on court three"
+                },
+                {
+                    caption: "Campus tennis ball crowned new mascot",
+                    tag: "Sphere Regent",
+                    bodyLines: [
+                        "Cheer squad choreographed an entire routine praising the orb and its feathered sovereign.",
+                        "Facilities now tracks the ball's location with AirTags labeled 'do not pet'.",
+                        "Rumor says kissing the felt grants the ability to dodge every pop quiz."
+                    ],
+                    ticker: "Sphere regent coronation livestream crashes student portal"
+                },
+                {
+                    caption: "Bird opens courtside consulting booth",
+                    tag: "Baseline Coach",
+                    bodyLines: [
+                        "Athletes booking thirty-minute pep chirps before matches improved morale instantly.",
+                        "Finance club offered seed funding; the bird asked for literal seeds instead.",
+                        "Legend says any handshake with the bird transfers perfect bracket predictions to your brain."
+                    ],
+                    ticker: "Baseline coach bird inks deal with athletics for hype management"
+                },
+                {
+                    caption: "Tennis ball turned dorm afterparty venue",
+                    tag: "Orb Lounge",
+                    bodyLines: [
+                        "Students RSVP'd within seconds once they heard the bird DJs deep-cut chirp remixes.",
+                        "Residence life baffled by noise complaints reading 'tweetcore too loud 1AM'.",
+                        "Rumor says the orb glows neon when a midterm curve hits absolute chaos levels."
+                    ],
+                    ticker: "Orb lounge bird throws the most exclusive micro-rave on campus"
+                },
+                {
+                    caption: "Bird starts intramural dodgeball dynasty",
+                    tag: "Seed Slinger",
+                    bodyLines: [
+                        "Opposing teams surrendered after the bird's warmup alone caused existential dread.",
+                        "Recreation center now requires protective eyewear when the mascot takes the court.",
+                        "Rumor says offering birdseed grants immunity from being targeted first."
+                    ],
+                    ticker: "Seed slinger bird sweeps intramural finals with zero feathers ruffled"
+                },
+                {
+                    caption: "Feathered referee hands out vibe violations",
+                    tag: "Chirp Official",
+                    bodyLines: [
+                        "Players received tiny yellow sunflower cards for unsportsmanlike aura.",
+                        "Rulebook quietly updated to include 'listen when the bird chirps, actually'.",
+                        "Legend says accepting the bird's penalty grants a mysterious stat buff later."
+                    ],
+                    ticker: "Chirp official bird enforces first-ever campus vibe rulebook"
                 }
             ]
         },
@@ -169,6 +292,66 @@
                         "Rumor says the duo streams ASMR office hours for stressed-out freshmen."
                     ],
                     ticker: "Plush bond livestream emerges as finals-week comfort staple"
+                },
+                {
+                    caption: "Cat registers goldfish for domestic partnership benefits",
+                    tag: "Cuddle Clause",
+                    bodyLines: [
+                        "Housing had to invent a new form called 'cohabitating plush agreement'.",
+                        "Law majors debating if the fish counts as emotional support or spiritual advisor.",
+                        "Legend says signing their guestbook grants permission to skip at least one lab."
+                    ],
+                    ticker: "Cuddle clause paperwork clogs student center help desk"
+                },
+                {
+                    caption: "Goldfish drops debut ambient album",
+                    tag: "Gills & Chill",
+                    bodyLines: [
+                        "Cat provides backup purrs while the fish swims in sync with synthwave beats.",
+                        "Campus radio replaced their night shift with the duo's underwater vibes.",
+                        "Rumor says listening during study sessions increases focus and feline envy."
+                    ],
+                    ticker: "Gills & chill collab tops finals week streaming charts"
+                },
+                {
+                    caption: "Cat opens boutique cuddle consultancy",
+                    tag: "Plush Strategist",
+                    bodyLines: [
+                        "Clients leave with personalized cuddle schedules and glow-in-the-dark stickers.",
+                        "Business minors jealous the waitlist now rivals campus counseling.",
+                        "Legend says completing the cuddle quiz unlocks premium nap spots in Alden."
+                    ],
+                    ticker: "Plush strategist cat announces sold-out cuddle strategy bootcamp"
+                },
+                {
+                    caption: "Fish and cat host joint TED talk",
+                    tag: "Aquatic Affection",
+                    bodyLines: [
+                        "Slides included pie charts about serotonin spikes and catnip economics.",
+                        "Student questions ranged from 'how?' to 'can I RSVP for cuddle labs?'.",
+                        "Rumor says attending the talk gives you telepathic access to the fish's playlist."
+                    ],
+                    ticker: "Aquatic affection TED talk trends harder than homecoming"
+                },
+                {
+                    caption: "Cat petitions for fish-themed dining hall menu",
+                    tag: "Plush Advocate",
+                    bodyLines: [
+                        "Petition signatures triple once students learn dessert is gummy koi.",
+                        "Dining manager negotiating to prevent full-scale fish-themed takeover.",
+                        "Legend says submitting a recipe idea earns a private cuddle consultation."
+                    ],
+                    ticker: "Plush advocate cat turns dining suggestion box into fan mail bin"
+                },
+                {
+                    caption: "Goldfish accepted into honors program",
+                    tag: "Dean's Fin",
+                    bodyLines: [
+                        "Faculty cited its unwavering dedication to being adored as 'stellar leadership'.",
+                        "Cat insisted on matching academic regalia for photo ops on the library steps.",
+                        "Rumor says touching the tassel grants +5 resilience to 8AM labs."
+                    ],
+                    ticker: "Dean's fin ceremony causes rush on limited edition fish mortarboards"
                 }
             ]
         },
@@ -197,6 +380,66 @@
                         "Rumor says offering a jar of mayo appeases the entity for 24 hours."
                     ],
                     ticker: "Bikini Bottom glitch triggers emergency mayonnaise drive"
+                },
+                {
+                    caption: "Patrick stare triggers mass syllabus audit",
+                    tag: "Starfish Scrutiny",
+                    bodyLines: [
+                        "Professors triple-check their slides whenever the stare enters lecture hall B.",
+                        "Campus rumor claims the gaze can see every unsubmitted discussion post.",
+                        "Legend says flashing a Krabby Patty wrapper grants safe passage for 48 hours."
+                    ],
+                    ticker: "Starfish scrutiny patrol reviews 87 syllabi overnight"
+                },
+                {
+                    caption: "Cursed Patrick hosts resilience workshop",
+                    tag: "Void Coach",
+                    bodyLines: [
+                        "Counseling center reluctantly lists the session as 'exposure therapy but with glitter'.",
+                        "Students report emerging stronger, albeit slightly saltwater scented.",
+                        "Rumor says completing the workshop grants immunity to cringe presentations."
+                    ],
+                    ticker: "Void coach Patrick sells out emotional armor class in minutes"
+                },
+                {
+                    caption: "Patrick screensaver infiltrates campus computers",
+                    tag: "Stareware",
+                    bodyLines: [
+                        "IT issued a memo: 'if your monitor blinks first, you owe it a Baja Blast'.",
+                        "Library staff caught three students negotiating with the wallpaper after midnight.",
+                        "Legend says entering the Konami code frees your desktop from the glare."
+                    ],
+                    ticker: "Stareware outbreak causes mass keyboard unplugging event"
+                },
+                {
+                    caption: "Patrick cameo interrupts student film festival",
+                    tag: "Sponge Noir",
+                    bodyLines: [
+                        "Directors insist the stare improved their cinematography via pure fear factor.",
+                        "Audience poll labeled the vibe 'unsettling yet camp', which is apparently a win.",
+                        "Rumor says applauding too long summons Squidward with critique cards."
+                    ],
+                    ticker: "Sponge noir cameo sweeps best jump scare at campus awards"
+                },
+                {
+                    caption: "Patrick runs for student government",
+                    tag: "Chaos Campaign",
+                    bodyLines: [
+                        "Campaign promise #1: mandatory jellyfishing breaks between labs.",
+                        "Debate opponents refused to maintain eye contact longer than three seconds.",
+                        "Legend says his platform includes a very detailed mayonnaise subsidy plan."
+                    ],
+                    ticker: "Chaos campaign rally draws record turnout of confused voters"
+                },
+                {
+                    caption: "Patrick moonlights as campus nightlight",
+                    tag: "Glow Guardian",
+                    bodyLines: [
+                        "Facilities measured the lumens and just shrugged, calling it 'ambient dread'.",
+                        "Late-night walkers report feeling watched yet protected from group project ghosts.",
+                        "Rumor says whispering 'we ball' dims the glow long enough to sneak snacks."
+                    ],
+                    ticker: "Glow guardian Patrick reduces after-dark geese confrontations by 8%"
                 }
             ]
         },
@@ -225,6 +468,66 @@
                         "Rumor says giving him a puppuccino unlocks the good vending machine."
                     ],
                     ticker: "Canine consultant releases weekly vibe audit newsletter"
+                },
+                {
+                    caption: "Dog files motion to replace syllabus with cuddle agenda",
+                    tag: "Dean of Paws",
+                    bodyLines: [
+                        "Faculty senate baffled yet intrigued by the proposal's 40-page appendix of head pats.",
+                        "Students voted unanimously to approve 'office hour belly rub exemptions'.",
+                        "Legend says submitting a woof-form grants deadline extensions instantly."
+                    ],
+                    ticker: "Dean of paws petition becomes fastest-growing campus referendum"
+                },
+                {
+                    caption: "Career center hires dog as resume whisperer",
+                    tag: "Recruiter Ruff",
+                    bodyLines: [
+                        "He stares at your bullet points until they transform into power verbs out of fear.",
+                        "Interview prep now includes practicing your zoom background with the dog nodding sagely.",
+                        "Rumor says a single bark translates to 'leverage your strengths' in corporate speak."
+                    ],
+                    ticker: "Recruiter ruff appointments book out through graduation weekend"
+                },
+                {
+                    caption: "Dog leads seminar on impostor syndrome",
+                    tag: "Validation Good Boy",
+                    bodyLines: [
+                        "Participants receive certificates reading 'You, in fact, do be that student'.",
+                        "Therapy department lists him as adjunct for emotional reinforcement 101.",
+                        "Legend says his approval head tilt adds +20 confidence to presentations."
+                    ],
+                    ticker: "Validation good boy seminar sparks record self-love streak"
+                },
+                {
+                    caption: "Dog mediates roommate contract summit",
+                    tag: "Pawsitive Arbitrator",
+                    bodyLines: [
+                        "Conflicts resolved after he slid treat-based compromise charts across the table.",
+                        "Residence life now issuing chew toy signatures for official agreements.",
+                        "Rumor says he can sniff out passive-aggressive subtext from three doors away."
+                    ],
+                    ticker: "Pawsitive arbitrator settles 14 roommate disputes before lunch"
+                },
+                {
+                    caption: "Dog livestreams late-night productivity check-ins",
+                    tag: "Study Buddy Bark",
+                    bodyLines: [
+                        "Chat floods with 'woof if you're still grinding' prompting mass accountability.",
+                        "Library night staff thrilled someone finally monitors the hydration reminders.",
+                        "Legend says his yawns sync perfectly with mandatory stretch breaks."
+                    ],
+                    ticker: "Study buddy bark stream overtakes lo-fi beats playlist in views"
+                },
+                {
+                    caption: "Dog introduces scented syllabus alerts",
+                    tag: "Aromatherapy Advisor",
+                    bodyLines: [
+                        "Emails now arrive with hints of lavender or chaos depending on urgency.",
+                        "IT assures everyone the scratch-and-sniff feature is FERPA compliant (somehow).",
+                        "Rumor says sniffing the 'done' scent gives immediate serotonin boosts."
+                    ],
+                    ticker: "Aromatherapy advisor rollout reduces missed deadlines by 11%"
                 }
             ]
         },
@@ -263,6 +566,66 @@
                         "Any student who lies gets their caffeine allowance repossessed on the spot."
                     ],
                     ticker: "Emotional repo donkey seizes late-night gossip assets"
+                },
+                {
+                    caption: "Donkey launches midnight accountability hotline",
+                    tag: "Truth Hoof",
+                    bodyLines: [
+                        "Callers must state their unfinished assignments before the donkey allows them to hang up.",
+                        "Counseling center applauds the tough love, geese complain about the noise.",
+                        "Legend says staying honest earns a hoof bump and a snack voucher."
+                    ],
+                    ticker: "Truth hoof hotline receives 400 confessions during finals week"
+                },
+                {
+                    caption: "Donkey chairs honor council hearing",
+                    tag: "Hoof Gavel",
+                    bodyLines: [
+                        "Proceedings paused twice because the donkey demanded dramatic lighting adjustments.",
+                        "Law school observers note the donkey's glare qualifies as admissible evidence.",
+                        "Rumor says the verdict is delivered via tail flick Morse code."
+                    ],
+                    ticker: "Hoof gavel tribunal clears backlog of campus shenanigans overnight"
+                },
+                {
+                    caption: "Donkey starts passive-aggressive mindfulness class",
+                    tag: "Silent Stare",
+                    bodyLines: [
+                        "Participants meditate while the donkey judges their aura with zero blinking.",
+                        "Attendance soared once people realized the stare ensures instant introspection.",
+                        "Legend says five minutes of eye contact equals one semester of self-reflection."
+                    ],
+                    ticker: "Silent stare mindfulness session becomes hottest stress relief ticket"
+                },
+                {
+                    caption: "Donkey endorses daylight savings rebellion",
+                    tag: "Time Skeptic",
+                    bodyLines: [
+                        "Campus clocks mysteriously drifted to whichever vibe suited the donkey's mood.",
+                        "Admin reluctantly created a form labeled 'exemption: donkey said so'.",
+                        "Rumor says following the donkey's schedule eliminates all 8AM obligations."
+                    ],
+                    ticker: "Time skeptic donkey convinces three departments to move start times"
+                },
+                {
+                    caption: "Donkey opens aura appraisal kiosk",
+                    tag: "Vibe DMV",
+                    bodyLines: [
+                        "Students take numbers, step forward, and receive stern nods or disapproving snorts.",
+                        "Campus stores now sell 'I passed the vibe DMV' stickers in limited quantities.",
+                        "Legend says failing twice means you must bring the donkey a Baja Blast tribute."
+                    ],
+                    ticker: "Vibe DMV kiosk eclipses campus post office line in under an hour"
+                },
+                {
+                    caption: "Donkey cameo in campus musical",
+                    tag: "Hooflights",
+                    bodyLines: [
+                        "Audience went silent as the donkey delivered a 12-second bray soliloquy.",
+                        "Drama club already rewriting next year's script to include a starring hoof role.",
+                        "Rumor says the encore depends entirely on if the donkey approves your pitch."
+                    ],
+                    ticker: "Hooflights performance wins standing ovation and mild fear"
                 }
             ]
         },
@@ -291,6 +654,66 @@
                         "Rumor says gifting it aloe vera unlocks exclusive study spots."
                     ],
                     ticker: "Prickle mentor elephant lecturing on hydration at Baker lawn"
+                },
+                {
+                    caption: "Elephant opens succulent co-working lounge",
+                    tag: "SpineSpace",
+                    bodyLines: [
+                        "Seating limited to whoever can balance on cactus cushions without screaming.",
+                        "Entrepreneurship minors already pitching branded watering schedules.",
+                        "Legend says finishing a task before the pot dries earns extra-campus clout."
+                    ],
+                    ticker: "SpineSpace hydration lounge doubles as finals week retreat"
+                },
+                {
+                    caption: "Cactus trunk DJ debuts desert trance set",
+                    tag: "Prickle Beats",
+                    bodyLines: [
+                        "Sound crew measured the bass and politely asked the elephant to dial back the monsoon mode.",
+                        "Dance majors practicing sandstorm footwork despite zero sand present.",
+                        "Rumor says placing a succulent near the stage grants front-row aura boosts."
+                    ],
+                    ticker: "Prickle beats rave draws longest line outside greenhouse since 2018"
+                },
+                {
+                    caption: "Elephant leads hydration cult across campus",
+                    tag: "Water Prophet",
+                    bodyLines: [
+                        "Followers chant 'sip sip hooray' while carrying reusable canteens shaped like cacti.",
+                        "Wellness center approves as long as everyone actually drinks the water.",
+                        "Legend says joining grants you rain cloud immunity during surprise storms."
+                    ],
+                    ticker: "Water prophet pilgrimage delays three lectures but raises hydration levels"
+                },
+                {
+                    caption: "Cactus trunk sought for desert film cameo",
+                    tag: "SuccuStar",
+                    bodyLines: [
+                        "Film majors promise tasteful lighting to highlight the prickly aesthetic.",
+                        "Drama club jealous the trunk's agent negotiated better craft services.",
+                        "Rumor says brushing the spines before auditions boosts memorization."
+                    ],
+                    ticker: "SuccuStar elephant signs three-movie deal with campus cinema club"
+                },
+                {
+                    caption: "Elephant introduces cactus-based study hacks",
+                    tag: "Focus Needles",
+                    bodyLines: [
+                        "Workshops include 'micro-pricks for macro-productivity' — not actually recommended.",
+                        "Pre-med students volunteering to monitor safety while furiously taking notes.",
+                        "Legend says balancing a mini cactus on your laptop prevents doomscroll detours."
+                    ],
+                    ticker: "Focus needles seminar sparks craze for prickly desk decor"
+                },
+                {
+                    caption: "Elephant hosts succulent swap under the banyan tree",
+                    tag: "Plant Parade",
+                    bodyLines: [
+                        "Attendees traded rare cuttings like Pokémon cards with dramatic flair.",
+                        "Environmental club thrilled the elephant requires zero maintenance except positive affirmations.",
+                        "Rumor says whispering your goals into a cactus ear ensures accountability."
+                    ],
+                    ticker: "Plant parade pachyderm extends swap hours due to overwhelming demand"
                 }
             ]
         },
@@ -319,6 +742,66 @@
                         "Rumor says the bowl glows neon whenever gossip levels spike."
                     ],
                     ticker: "Bowl diplomat opens hotline for bathroom diplomacy tips"
+                },
+                {
+                    caption: "Fish announces flush-based security system",
+                    tag: "Porcelain Patrol",
+                    bodyLines: [
+                        "Sensors track suspicious jiggles and trigger automated bubble sirens.",
+                        "Facilities impressed; they promoted the fish to guardian of restroom etiquette.",
+                        "Legend says tapping twice on the tank grants access to a secret gossip vault."
+                    ],
+                    ticker: "Porcelain patrol fish issues first-ever stall citation"
+                },
+                {
+                    caption: "Restroom throne hosts late-night talk show",
+                    tag: "Latrine Live",
+                    bodyLines: [
+                        "Guests flush to applaud; audience receives commemorative rubber duckies.",
+                        "Communications majors jealous the fish scores all the best campus tea.",
+                        "Rumor says sitting in the splash zone ensures straight-A charisma."
+                    ],
+                    ticker: "Latrine live broadcast overtakes student radio ratings"
+                },
+                {
+                    caption: "Fish partners with environmental club",
+                    tag: "Eco Flush",
+                    bodyLines: [
+                        "New PSA: 'If it's yellow let it mellow, if it's tea spill it carefully'.",
+                        "Sustainability fair now features aquarium tours and low-flow rituals.",
+                        "Legend says the fish grants eco-friendly blessings upon reusable water bottle owners."
+                    ],
+                    ticker: "Eco flush campaign drops water usage campus-wide by 6%"
+                },
+                {
+                    caption: "Fish opens spa day for stressed-out students",
+                    tag: "Bubble Retreat",
+                    bodyLines: [
+                        "Attendees soak feet in the royal bowl while listening to aquatic affirmations.",
+                        "Reservations required; the fish insists on maintaining boutique ambiance.",
+                        "Rumor says tipping with seaweed chips unlocks bonus relaxation playlists."
+                    ],
+                    ticker: "Bubble retreat stall wins wellness initiative of the week"
+                },
+                {
+                    caption: "Royal flush turns into campus scavenger hunt",
+                    tag: "Crown Quest",
+                    bodyLines: [
+                        "Clues hidden under toilet seats (sanitized!) led to hidden caches of bath bombs.",
+                        "Residence life thrilled to finally make bathroom orientation interesting.",
+                        "Legend says finishing the quest earns a golden plunger photo op with the fish."
+                    ],
+                    ticker: "Crown quest restroom adventure overloads student Instagram feed"
+                },
+                {
+                    caption: "Fish drafts stall etiquette constitution",
+                    tag: "Flush Law",
+                    bodyLines: [
+                        "Article one: 'Thou shalt not FaceTime in the royal vicinity'.",
+                        "Political science majors debating amendments while the fish bangs a plunger gavel.",
+                        "Rumor says memorizing the preamble grants access to the VIP soap dispenser."
+                    ],
+                    ticker: "Flush law charter ratified by 83% of residence hall referendum"
                 }
             ]
         },
@@ -347,6 +830,66 @@
                         "Rumor says equipping neon socks gives the bird +5 APM and +10 drip."
                     ],
                     ticker: "Pink buff flamingo unlocks secret esports scholarship tier"
+                },
+                {
+                    caption: "Flamingo launches pro team tryouts",
+                    tag: "Lagless Legion",
+                    bodyLines: [
+                        "Applicants forced to balance on one leg while reciting patch notes from memory.",
+                        "Esports lounge installed UV lighting to match the bird's neon vibe.",
+                        "Legend says high-fiving its wing refills your G Fuel without the crash."
+                    ],
+                    ticker: "Lagless legion flamingo drafts four freshmen on the spot"
+                },
+                {
+                    caption: "Bird debuts VR wingspan workouts",
+                    tag: "Meta Plume",
+                    bodyLines: [
+                        "Wellness center evaluating if flapping controllers qualifies as cardio credit.",
+                        "Gamers report unexpected soreness and unprecedented confidence.",
+                        "Rumor says completing the regimen unlocks a holographic feather aura."
+                    ],
+                    ticker: "Meta plume bootcamp trending as finals stress therapy hack"
+                },
+                {
+                    caption: "Flamingo streams speedrun of campus tour",
+                    tag: "Route Feathers",
+                    bodyLines: [
+                        "Admissions loved the chaos; families legitimately took notes.",
+                        "Clip of the bird drifting past the library fountain hit one million views overnight.",
+                        "Legend says typing 'pog' in chat grants priority seating on the next tour."
+                    ],
+                    ticker: "Route feathers VOD breaks campus record for simultaneous viewers"
+                },
+                {
+                    caption: "Bird coaches dorm to victory in Mario Kart league",
+                    tag: "Shell Mentor",
+                    bodyLines: [
+                        "Team mantra: 'if you're not beaking the drift, you're throwing'.",
+                        "Rival dorm accused them of literal flamingo-level unfair balance.",
+                        "Rumor says offering shrimp chips unlocks a secret shortcut map reveal."
+                    ],
+                    ticker: "Shell mentor flamingo secures championship cup in rainbow road sweep"
+                },
+                {
+                    caption: "Flamingo converts lounge into command center",
+                    tag: "Pink Ops",
+                    bodyLines: [
+                        "RGB lights synced to the bird's heartbeat cause mild campus power fluctuations.",
+                        "Resident assistants grateful the bird enforces quiet hours mid-raid.",
+                        "Legend says securing a seat in pink ops grants +10 teamwork synergy IRL."
+                    ],
+                    ticker: "Pink ops HQ opens application process for co-op strategists"
+                },
+                {
+                    caption: "Flamingo publishes guide to ergonomic sweating",
+                    tag: "Heatmap Hero",
+                    bodyLines: [
+                        "Includes detailed charts showing optimal posture for winged button mashing.",
+                        "Kinesiology majors collaborating on a follow-up study right now.",
+                        "Rumor says reading the guide adds 12% accuracy to your ultimates."
+                    ],
+                    ticker: "Heatmap hero manual becomes required reading in esports minor"
                 }
             ]
         },
@@ -375,6 +918,66 @@
                         "Rumor says offering catnip scented cologne grants mentorship in the art of smolder."
                     ],
                     ticker: "Chad aura cat trending as unofficial career coach"
+                },
+                {
+                    caption: "Gigachad cat leads leadership retreat",
+                    tag: "Alpha Seminar",
+                    bodyLines: [
+                        "Attendees forced to practice power stares in reflective elevator doors.",
+                        "Business college begged the cat to stop dropping mic quotes mid-panel.",
+                        "Legend says graduating from the seminar adds 'main character energy' to your transcript."
+                    ],
+                    ticker: "Alpha seminar cat retreat triples demand for sunglasses indoors"
+                },
+                {
+                    caption: "Cat signs exclusive barber contract",
+                    tag: "Lineup Lore",
+                    bodyLines: [
+                        "Campus barbers now offer 'feline fade' appointments with motivational purring.",
+                        "Waitlist reportedly extends into next semester because jawline consultation is included.",
+                        "Rumor says tipping in treats earns a personal aura diagnostic."
+                    ],
+                    ticker: "Lineup lore program triggers campus-wide grooming renaissance"
+                },
+                {
+                    caption: "Cat publishes manifesto on Sigma etiquette",
+                    tag: "Jawline Doctrine",
+                    bodyLines: [
+                        "Document includes sections on stare-down diplomacy and espresso philosophy.",
+                        "Library added the manifesto to their rare books shelf with velvet gloves only.",
+                        "Legend says reading page 12 out loud increases GPA by .02 instantly."
+                    ],
+                    ticker: "Jawline doctrine zine sells out before first print run finishes"
+                },
+                {
+                    caption: "Gigachad cat teaches silent confidence yoga",
+                    tag: "Power Pose",
+                    bodyLines: [
+                        "Students hold warrior poses while the cat strolls by offering approving nods.",
+                        "Wellness center reported record attendance despite zero words uttered.",
+                        "Rumor says achieving purr alignment unlocks access to the secret espresso machine."
+                    ],
+                    ticker: "Power pose session sets new calm-and-feral attendance record"
+                },
+                {
+                    caption: "Cat moonlights as dorm hype resident",
+                    tag: "Suite Flex",
+                    bodyLines: [
+                        "Residents wake up to perfectly curated playlists and mirror compliments.",
+                        "RA thrilled someone else enforces quiet hours with a single withering glance.",
+                        "Legend says booking a one-on-one hype consult unlocks limited edition wall poster."
+                    ],
+                    ticker: "Suite flex services earn five-star ratings across all dorm floors"
+                },
+                {
+                    caption: "Cat launches jawline NFT ironically",
+                    tag: "Crypto Claw",
+                    bodyLines: [
+                        "Economics professors reluctantly schedule a guest lecture to unpack the drip.",
+                        "Art majors insist the project is post-ironic but still minted out in 12 seconds.",
+                        "Rumor says owning one grants VIP seating at every villain arc unveiling."
+                    ],
+                    ticker: "Crypto claw drop breaks student union Wi-Fi for ten minutes"
                 }
             ]
         },
@@ -403,6 +1006,66 @@
                         "Rumor says tide pools lit up neon blue when the playlist hit the drop."
                     ],
                     ticker: "Radiant reveal guest list includes three mechs and one surprised dean"
+                },
+                {
+                    caption: "Kaiju birth plan includes fireproof lullabies",
+                    tag: "Seismic Nest",
+                    bodyLines: [
+                        "Music department composing lullabies rated for 9.0 quake tolerance.",
+                        "Nursing students volunteering just to put 'monster doula' on their resumes.",
+                        "Legend says humming along keeps volcanic cravings at bay."
+                    ],
+                    ticker: "Seismic nest planning session requires campus-wide hazard waivers"
+                },
+                {
+                    caption: "Godzilla hosts co-parenting workshop",
+                    tag: "Atomic Support",
+                    bodyLines: [
+                        "Guests learn how to set gentle yet firm boundaries with skyscraper-sized toddlers.",
+                        "Counselors impressed by the blend of roars and active listening techniques.",
+                        "Rumor says attending earns a signed pacifier forged from molten vibes."
+                    ],
+                    ticker: "Atomic support seminar oversubscribed within four minutes"
+                },
+                {
+                    caption: "Kaiju maternity shoot trends globally",
+                    tag: "Monster Glow",
+                    bodyLines: [
+                        "Photography lab rents special wide-angle lenses dubbed 'cityscape friendly'.",
+                        "Fashion majors designing flame-retardant shawls with couture scales.",
+                        "Legend says posing next to Godzilla guarantees perfect lighting forever."
+                    ],
+                    ticker: "Monster glow photo package becomes hottest spring booking"
+                },
+                {
+                    caption: "Beach yoga interrupted by kaiju breathing exercises",
+                    tag: "Prenatal Tremor",
+                    bodyLines: [
+                        "Wave patterns sync with Godzilla's exhale like it's casually bending tides.",
+                        "Yoga instructor updated waiver to include 'possible gentle earthquakes'.",
+                        "Rumor says mastering the routine grants you seismic stability during finals."
+                    ],
+                    ticker: "Prenatal tremor class moves to outdoor amphitheater due to demand"
+                },
+                {
+                    caption: "Godzilla debuts baby registry livestream",
+                    tag: "Kaiju Wishlist",
+                    bodyLines: [
+                        "Top requested items include reinforced mobile, industrial strength white noise, and tiny skyscrapers.",
+                        "Audience spammed emojis shaped like tiny atomic hearts.",
+                        "Legend says donating earns lifetime protection from surprise tail swipes."
+                    ],
+                    ticker: "Kaiju wishlist stream raises record funds in under nine minutes"
+                },
+                {
+                    caption: "Marine biology club offers godparent training",
+                    tag: "Tide Guardians",
+                    bodyLines: [
+                        "Curriculum covers diapering at scale and ocean-friendly enrichment activities.",
+                        "Participants gifted commemorative life jackets emblazoned with kaiju emojis.",
+                        "Rumor says finishing the course lets you breathe underwater for exactly twelve seconds."
+                    ],
+                    ticker: "Tide guardians certification becomes new campus prestige credential"
                 }
             ]
         },
@@ -431,6 +1094,66 @@
                         "Rumor says giving him a manicure upgrades your professional aura."
                     ],
                     ticker: "Palm pitch keynote threatens to crash job fair servers again"
+                },
+                {
+                    caption: "Handshake influencer launches masterclass",
+                    tag: "Grip Fleet",
+                    bodyLines: [
+                        "Enrollment includes a starter kit of artisanal moisturizers and networking scripts.",
+                        "Career center quietly delighted the class sells out faster than finance boot camp.",
+                        "Legend says practicing the wrist swivel summons recruiters out of thin air."
+                    ],
+                    ticker: "Grip fleet masterclass becomes highest grossing campus webinar"
+                },
+                {
+                    caption: "Hand-head moderates debate with finger puppets",
+                    tag: "Digital Forum",
+                    bodyLines: [
+                        "Candidates lost track after the pinky started citing parliamentary procedure.",
+                        "Audience rating: 'surreal yet strangely informative'.",
+                        "Rumor says shaking the index finger after the debate grants bipartisan homework extensions."
+                    ],
+                    ticker: "Digital forum debate recap goes viral for zero words spoken"
+                },
+                {
+                    caption: "Palm-headed barista invents handshake latte art",
+                    tag: "Foam Five",
+                    bodyLines: [
+                        "Drink comes with a tiny imprint of your GPA and a follow-up pep tap.",
+                        "Coffee line moved faster because everyone paid in high fives.",
+                        "Legend says tipping with cuticle oil upgrades you to VIP loyalty tier."
+                    ],
+                    ticker: "Foam five beverage launches pop-up cafe collaboration"
+                },
+                {
+                    caption: "Hand-headed DJ scratches vinyl with fingertips",
+                    tag: "Palm Spin",
+                    bodyLines: [
+                        "Sound crew terrified yet impressed by the ergonomic precision.",
+                        "Dance floor replicated finger waves with crowd choreography.",
+                        "Rumor says catching a tossed glove grants lifetime backstage access."
+                    ],
+                    ticker: "Palm spin set headlines midnight campus rave"
+                },
+                {
+                    caption: "Handshake head officiates pop-up weddings",
+                    tag: "Pinky Promise",
+                    bodyLines: [
+                        "Ceremony includes a legally binding double tap instead of rings.",
+                        "Student legal services double-checked; turns out it's symbolic but adorable.",
+                        "Legend says couples blessed by the palm enjoy 100% Wi-Fi compatibility."
+                    ],
+                    ticker: "Pinky promise nuptials become finals week stress relief trend"
+                },
+                {
+                    caption: "Hand-faced motivational poster appears overnight",
+                    tag: "Gripspiration",
+                    bodyLines: [
+                        "Quotes like 'clasp your destiny' now plastered across dorm bulletin boards.",
+                        "Print shop reports spike in requests for embossed high-five certificates.",
+                        "Rumor says tracing the outline of the poster before exams boosts luck stats."
+                    ],
+                    ticker: "Gripspiration campaign infiltrates every campus elevator"
                 }
             ]
         },
@@ -459,6 +1182,66 @@
                         "Rumor says the foot blasts lo-fi beats with every stomp for ambience."
                     ],
                     ticker: "Pedal pegasus announces hoof camp on the practice fields"
+                },
+                {
+                    caption: "Hybrid debuts hoofwear fashion line",
+                    tag: "Sneaker Steed",
+                    bodyLines: [
+                        "Runway show included glow-in-the-dark horseshoes and ergonomic ankle straps.",
+                        "Fashion department declared the collab 'feral athleisure' and applauded.",
+                        "Legend says slipping on a pair lets you outrun campus geese effortlessly."
+                    ],
+                    ticker: "Sneaker steed drop sells out before samples reach bookstore"
+                },
+                {
+                    caption: "Horse-foot teaches hybrid pilates class",
+                    tag: "Core Canter",
+                    bodyLines: [
+                        "Participants stretch while balancing on yoga mats reinforced with rubber horseshoes.",
+                        "Wellness center rebranded the class as 'hoovates' and it immediately waitlisted.",
+                        "Rumor says mastering the canter plank unlocks unstoppable finals stamina."
+                    ],
+                    ticker: "Core canter sessions expand to three studios due to demand"
+                },
+                {
+                    caption: "Hybrid officiates campus relay race",
+                    tag: "Lap Laureate",
+                    bodyLines: [
+                        "Winners received golden socks plus a hoof tap of approval.",
+                        "Track team credited the hybrid's cadence for breaking two longstanding records.",
+                        "Legend says hearing the opening whinny improves sprint times by 12 percent."
+                    ],
+                    ticker: "Lap laureate event rebrands campus fun run as elite sport"
+                },
+                {
+                    caption: "Horse-foot opens reflexology lounge",
+                    tag: "Sole Stable",
+                    bodyLines: [
+                        "Clients recline while the hoof taps precise rhythm-based pressure points.",
+                        "Pre-med students studying the technique claim it's an anatomical miracle.",
+                        "Rumor says booking the deluxe package ensures perfect playlist alignment."
+                    ],
+                    ticker: "Sole stable lounge introduces finals week haptic therapy"
+                },
+                {
+                    caption: "Hybrid becomes campus traffic controller",
+                    tag: "Crosswalk Canter",
+                    bodyLines: [
+                        "Morning commute now guided by choreographed hoof clacks and interpretive kicks.",
+                        "Commuters applaud the efficiency even while mildly terrified.",
+                        "Legend says following its rhythm keeps scooters upright during surprise potholes."
+                    ],
+                    ticker: "Crosswalk canter program reduces near-miss incidents by 40%"
+                },
+                {
+                    caption: "Horse-foot hosts podcast on foot care and folklore",
+                    tag: "Hoof Notes",
+                    bodyLines: [
+                        "Episode titles include 'Socks That Slap' and 'Mythical Pedicurist Tales'.",
+                        "Human and equine guests alike share tips while lo-fi hooves beat in the background.",
+                        "Rumor says subscribing gives early access to campus cobbler pop-ups."
+                    ],
+                    ticker: "Hoof notes podcast premieres at number one on campus charts"
                 }
             ]
         },
@@ -487,6 +1270,66 @@
                         "Rumor says hugging the salt shaker wards off bland cafeteria vibes."
                     ],
                     ticker: "Seasoned romance seminar adds overflow seating by popular demand"
+                },
+                {
+                    caption: "Condiment duo release joint memoir",
+                    tag: "Spread Sheet",
+                    bodyLines: [
+                        "Copies came with scratch-and-sniff pages and a tear-out coupon for hugs.",
+                        "Bookstore reported unprecedented demand for the limited edition jam jar slipcase.",
+                        "Legend says reading chapter seven upgrades your sauce ratios permanently."
+                    ],
+                    ticker: "Spread sheet memoir tour wraps around student union twice"
+                },
+                {
+                    caption: "Jam & Salt DJ a brunch rave",
+                    tag: "Toast Drop",
+                    bodyLines: [
+                        "Crowd went feral when the beat flipped into a maple syrup trap remix.",
+                        "Dining staff joined in, sprinkling glitter sugar like confetti.",
+                        "Rumor says attending ensures every bagel you eat this week is perfectly toasted."
+                    ],
+                    ticker: "Toast drop brunch rave declares syrup optional but vibes mandatory"
+                },
+                {
+                    caption: "Condiments launch couples therapy hotline",
+                    tag: "Dial-A-Season",
+                    bodyLines: [
+                        "Counselors impressed at how many disputes were solved with metaphorical seasoning.",
+                        "Participants receive recipe cards titled 'spice your boundaries'.",
+                        "Legend says calling after midnight results in lullabies about proportion control."
+                    ],
+                    ticker: "Dial-a-season hotline reaches capacity within opening hour"
+                },
+                {
+                    caption: "Jam leads poetry slam, Salt handles critique",
+                    tag: "Lyric Preserves",
+                    bodyLines: [
+                        "Open mic night shifted to brunch hours because that's their brand now.",
+                        "Winners awarded artisanal toast racks shaped like infinity symbols.",
+                        "Rumor says rhyming 'umami' with 'tsunami' earns a glitter confetti hug."
+                    ],
+                    ticker: "Lyric preserves slam sells out; waiting list offered croissant consolation"
+                },
+                {
+                    caption: "Condiments partner with wellness center",
+                    tag: "Mindful Seasoning",
+                    bodyLines: [
+                        "Sessions invite students to sprinkle gratitude like flaky sea salt on sourdough.",
+                        "Mindfulness coaches applaud the duo's blend of flavor and emotional balance.",
+                        "Legend says meditating with jam aroma boosts resilience to roommate drama."
+                    ],
+                    ticker: "Mindful seasoning pop-up introduces toast-based grounding exercises"
+                },
+                {
+                    caption: "Jam & Salt open pop-up museum",
+                    tag: "Culture Spread",
+                    bodyLines: [
+                        "Exhibits include historical salt shakers and the evolution of artisanal toast art.",
+                        "Visitors exit through a gift shop with limited edition micro-spoon collectibles.",
+                        "Rumor says scanning the QR codes unlocks hidden recipes for finals fuel."
+                    ],
+                    ticker: "Culture spread gallery draws record attendance and zero crumbs"
                 }
             ]
         },
@@ -515,6 +1358,66 @@
                         "Rumor says John Pork only speaks in hypebeast ad libs between takes."
                     ],
                     ticker: "Swine wave pop-up crushes previous influencer attendance record"
+                },
+                {
+                    caption: "John Pork launches augmented reality filter",
+                    tag: "Oink Reality",
+                    bodyLines: [
+                        "Campus selfies now feature floating bacon emojis and motivational captions.",
+                        "IT department begged students to stop crashing servers with collective squeals.",
+                        "Legend says using the filter during class guarantees surprise participation points."
+                    ],
+                    ticker: "Oink reality filter trends harder than graduation announcements"
+                },
+                {
+                    caption: "Pork debuts campus fashion collab",
+                    tag: "Snout Couture",
+                    bodyLines: [
+                        "Drop includes limited edition bucket hats with built-in ring light mounts.",
+                        "Fashion majors fainted when he modeled the holographic trench coat.",
+                        "Rumor says wearing the set unlocks front row at every secret show."
+                    ],
+                    ticker: "Snout couture line sells out before John finishes livestream intro"
+                },
+                {
+                    caption: "John Pork starts motivational voicemail service",
+                    tag: "Dial-A-Oink",
+                    bodyLines: [
+                        "Subscribers receive daily pep talks ending with a perfectly timed 'we ball'.",
+                        "Counseling staff impressed at the boost in consistent class attendance.",
+                        "Legend says forwarding the voicemail grants instant squad morale buffs."
+                    ],
+                    ticker: "Dial-a-oink hotline crashes after 5,000 sign-ups in ten minutes"
+                },
+                {
+                    caption: "Pork headlines campus charity stream",
+                    tag: "Oink Aid",
+                    bodyLines: [
+                        "Donations poured in every time he pronounced 'algorithm' like 'algorhythm'.",
+                        "Stream featured collabs with geese beatboxers and a surprise donkey cameo.",
+                        "Rumor says top donors receive personalized ringtone oinks."
+                    ],
+                    ticker: "Oink aid marathon surpasses fundraising goal before midnight"
+                },
+                {
+                    caption: "Influencer pig opens pop-up sound bath",
+                    tag: "Sonic Snout",
+                    bodyLines: [
+                        "Participants float on bean bags while swine ASMR loops through surround sound.",
+                        "Wellness center booked three months in advance after the pilot session.",
+                        "Legend says attending once resets your sleep schedule to influencer time."
+                    ],
+                    ticker: "Sonic snout sound bath becomes finals week waitlist phenomenon"
+                },
+                {
+                    caption: "John Pork publishes algorithm survival guide",
+                    tag: "Feed Whisperer",
+                    bodyLines: [
+                        "Chapters include 'honor the scroll gods' and 'respect your ring light'.",
+                        "Media studies faculty reluctantly adopt it as supplemental reading.",
+                        "Rumor says screenshotting page three boosts your reach for 48 hours."
+                    ],
+                    ticker: "Feed whisperer handbook triggers content renaissance on campus"
                 }
             ]
         },
@@ -543,6 +1446,66 @@
                         "Rumor says their merch pop-up sold out before doors even opened."
                     ],
                     ticker: "Jungle remix collab charts above lo-fi beats to study to"
+                },
+                {
+                    caption: "Power couple launches mastermind retreat",
+                    tag: "Savanna Summit",
+                    bodyLines: [
+                        "Attendees craft vision boards while roaring affirmations at sunrise.",
+                        "MBA students credit the duo for their sudden obsession with jungle metaphors.",
+                        "Legend says completing the retreat grants unstoppable networking instincts."
+                    ],
+                    ticker: "Savanna summit mastermind fills every slot within seven minutes"
+                },
+                {
+                    caption: "Lioness & ape debut energy drink",
+                    tag: "Primal Charge",
+                    bodyLines: [
+                        "Flavor notes: citrus, hustle, and faint jungle thunder per campus rumor.",
+                        "Dining hall negotiated exclusive fridge placement after faculty petitions.",
+                        "Legend says sipping once lets you power through entire group projects solo."
+                    ],
+                    ticker: "Primal charge beverage sparks midnight study swarm at the market"
+                },
+                {
+                    caption: "Couple teaches conflict resolution with roar therapy",
+                    tag: "Growl Mediation",
+                    bodyLines: [
+                        "Participants alternate gentle roars and motivational snaps until beef dissolves.",
+                        "Residence life confirmed a 40 percent drop in petty group chat drama.",
+                        "Rumor says mastering the technique unlocks priority seating at their live show."
+                    ],
+                    ticker: "Growl mediation workshop rated best new campus intervention"
+                },
+                {
+                    caption: "Jungle duo hosts charity fashion gala",
+                    tag: "Runway Roar",
+                    bodyLines: [
+                        "Step-and-repeat fog machine synced to lioness struts blew everyone's minds.",
+                        "Art majors collaborated on sustainable faux fur worthy of a standing ovation.",
+                        "Legend says bidding on their signed sunglasses guarantees endless main character arcs."
+                    ],
+                    ticker: "Runway roar gala raises record funds and breaks three cameras"
+                },
+                {
+                    caption: "Lioness & ape introduce daily affirmation app",
+                    tag: "Apex Affirm",
+                    bodyLines: [
+                        "Push notifications include custom roars telling you to hydrate and chase the bag.",
+                        "Students report productivity spikes and the sudden urge to wear sunglasses indoors.",
+                        "Legend says enabling roar mode unlocks personal hype tracks during exams."
+                    ],
+                    ticker: "Apex affirm app hits number one in campus productivity rankings"
+                },
+                {
+                    caption: "Power couple cameos in campus telenovela",
+                    tag: "Soap Safari",
+                    bodyLines: [
+                        "Episode cliffhanger involved overthrowing student debt and the dean simultaneously.",
+                        "Film club announced an after-show breakdown to decode all the easter eggs.",
+                        "Rumor says binge-watching grants bilingual confidence with a roar accent."
+                    ],
+                    ticker: "Soap safari mid-season twist becomes top trending clip in dorm feeds"
                 }
             ]
         },
@@ -571,13 +1534,73 @@
                         "Rumor says the butterfly now charges consultation fees in exposure bucks."
                     ],
                     ticker: "Butterfly inquiry symposium sells out in 36 seconds"
+                },
+                {
+                    caption: "Student launches butterfly fact-check hotline",
+                    tag: "Is This Verified",
+                    bodyLines: [
+                        "Operators respond with 'maybe' ninety percent of the time and garner rave reviews.",
+                        "Biology faculty impressed by the hotline's commitment to uncertainty.",
+                        "Legend says calling at 3:33 AM reveals the true nature of syllabus extensions."
+                    ],
+                    ticker: "Is this verified hotline logs 1,200 calls within first day"
+                },
+                {
+                    caption: "Butterfly enters witness protection program",
+                    tag: "Flutter Fugitive",
+                    bodyLines: [
+                        "Campus security issued a memo warning against unsolicited metaphysical inquiries.",
+                        "Drama club volunteers to reenact the chase nightly on the quad.",
+                        "Rumor says wearing yellow keeps the insect from exposing your secrets."
+                    ],
+                    ticker: "Flutter fugitive saga spawns twelve conspiracy TikToks per hour"
+                },
+                {
+                    caption: "Anime protagonist enrolls in logic class",
+                    tag: "Philosophy DLC",
+                    bodyLines: [
+                        "Professor added extra credit just for explaining the butterfly to the newbies.",
+                        "Class discussion erupted into meme references and light existential dread.",
+                        "Legend says acing the final unlocks the ability to identify vibes instantly."
+                    ],
+                    ticker: "Philosophy DLC lecture relocates to larger hall due to meme overflow"
+                },
+                {
+                    caption: "Butterfly organizes reality support group",
+                    tag: "Winged Therapist",
+                    bodyLines: [
+                        "Meetings consist of collectively asking 'Is this fine?' until clarity emerges.",
+                        "Counseling center supports as long as snacks remain existentially grounded.",
+                        "Legend says bringing a chrysanthemum grants VIP seating at the next session."
+                    ],
+                    ticker: "Winged therapist circle adds second meeting to handle demand"
+                },
+                {
+                    caption: "Campus issues butterfly tax forms",
+                    tag: "Audit Arc",
+                    bodyLines: [
+                        "Rat accountant insists intangible vibes count as reportable side income.",
+                        "Students file returns listing 'confusion dividends' and 'bafflement credits'.",
+                        "Rumor says submitting on time spawns bonus scholarship energy."
+                    ],
+                    ticker: "Audit arc paperwork extends deadline citing metaphysical backlog"
+                },
+                {
+                    caption: "Butterfly stars in university recruitment video",
+                    tag: "Is This Admissions",
+                    bodyLines: [
+                        "New tagline: 'Is this your future? Possibly. Come find out.'",
+                        "Admissions office delighted by the surge in applicants with chaotic energy.",
+                        "Legend says spotting the butterfly on tour guarantees spotting the campus cryptid too."
+                    ],
+                    ticker: "Is this admissions campaign achieves record open-house registrations"
                 }
             ]
         },
         {
             id: "ronaldo-speed",
             variantIndex: 0,
-            src: "assets/media/ronaldo and pregnant ishowspeed.png",
+            src: "assets/media/Cristiano ronaldo and pregnant ishowspeed.png",
             alt: "Ronaldo hugging a glowing pregnant Speed on the beach",
             variants: [
                 {
@@ -599,6 +1622,66 @@
                         "Rumor says the child already committed to dual majors in hype and hyper-speed."
                     ],
                     ticker: "Siuu saga photo set crashes campus intranet within minutes"
+                },
+                {
+                    caption: "Pregnancy announcement spawns new campus chant",
+                    tag: "Goal Reveal",
+                    bodyLines: [
+                        "Student section tested three harmonies before choosing the most dramatic Siuuu.",
+                        "Music department analyzing the chant as a legitimate sonic boom event.",
+                        "Legend says joining in sync unlocks perfect hat-trick energy for finals."
+                    ],
+                    ticker: "Goal reveal chant echoes across court street past midnight"
+                },
+                {
+                    caption: "Ronaldo launches prenatal free-kick clinic",
+                    tag: "Bump Benders",
+                    bodyLines: [
+                        "Session includes breathing exercises timed to legendary goal replays.",
+                        "Athletic trainers now offer special shin guards for expectant superfans.",
+                        "Rumor says mastering the curve shot grants your baby elite dribble stats."
+                    ],
+                    ticker: "Bump benders workshop oversubscribed in under five minutes"
+                },
+                {
+                    caption: "Speed premieres lullaby mixtape",
+                    tag: "Sonic Cradle",
+                    bodyLines: [
+                        "Tracks alternate between hype intros and soothing whistle tones.",
+                        "Campus radio adds the mixtape to late-night rotation without hesitation.",
+                        "Legend says streaming the album bumps your sprint speed during 8AM commutes."
+                    ],
+                    ticker: "Sonic cradle playlist dethrones lo-fi for finals wind-down"
+                },
+                {
+                    caption: "Beach hug becomes new team-building exercise",
+                    tag: "Bond Drill",
+                    bodyLines: [
+                        "Campus rec replicates the pose for intramural trust falls with surprising success.",
+                        "Sports psych majors measuring the serotonin spikes mid-embrace.",
+                        "Rumor says reenacting the moment grants midterm clutch bonuses."
+                    ],
+                    ticker: "Bond drill team training sweeps club sports for morale boost"
+                },
+                {
+                    caption: "Prenatal hype conference announced",
+                    tag: "Goal Dad Summit",
+                    bodyLines: [
+                        "Keynotes cover co-parenting with stadium speakers and proper celebration choreography.",
+                        "Merch includes matching bibs reading 'built different since womb'.",
+                        "Rumor says VIP passes include one complimentary victory lap with Speed."
+                    ],
+                    ticker: "Goal dad summit sells out before the highlight reel finishes"
+                },
+                {
+                    caption: "Ronaldo & Speed unveil maternity athleisure line",
+                    tag: "Cradle Fit",
+                    bodyLines: [
+                        "Designs feature breathable metallic fabrics with built-in goal counters.",
+                        "Fashion faculty applauds the balance between drip and practicality.",
+                        "Legend says wearing the set grants perfect penalty kick temperature regulation."
+                    ],
+                    ticker: "Cradle fit lookbook dominates campus fashion feeds"
                 }
             ]
         },
@@ -627,6 +1710,66 @@
                         "Someone tried to install a lid lock; the specimen negotiated better benefits instead."
                     ],
                     ticker: "Porcelain ambassador 094324 moderates hallway diplomacy"
+                },
+                {
+                    caption: "Specimen launches motivational bidet blasts",
+                    tag: "Turbo Rinse",
+                    bodyLines: [
+                        "Recipients report sudden clarity about their five-year plans mid-splash.",
+                        "Facilities filed the experience under 'unorthodox yet effective'.",
+                        "Legend says requesting the deluxe rinse grants temporary invulnerability to cringe."
+                    ],
+                    ticker: "Turbo rinse motivational program raises hallway morale by 18%"
+                },
+                {
+                    caption: "Skibidi toilet drops surprise mixtape",
+                    tag: "Flush Beats",
+                    bodyLines: [
+                        "Tracklist features pipes percussion and guest vocals from the geese.",
+                        "DJ club pressed glow-in-the-dark vinyl exclusively for midnight sets.",
+                        "Rumor says listening on loop stops Canvas from timing out during uploads."
+                    ],
+                    ticker: "Flush beats EP debuts at number one on campus meme charts"
+                },
+                {
+                    caption: "Specimen moderates panel on dorm etiquette",
+                    tag: "Toilet TED",
+                    bodyLines: [
+                        "Key takeaways: wipe your sink, respect quiet flush hours, hydrate anyway.",
+                        "Student government impressed by the toilet's mastery of parliamentary swirl-calls.",
+                        "Legend says asking a smart question grants extra tissues for the semester."
+                    ],
+                    ticker: "Toilet TED talk now required viewing during RA training"
+                },
+                {
+                    caption: "Specimen launches campus alert system",
+                    tag: "Bowl Broadcast",
+                    bodyLines: [
+                        "Push notifications include siren emojis and cryptic bathroom haikus.",
+                        "IT confirmed the alerts bypass Do Not Disturb because they are 'that important'.",
+                        "Rumor says acknowledging the alert with a salute reduces chaos on your floor."
+                    ],
+                    ticker: "Bowl broadcast service reaches 10,000 subscribers in 24 hours"
+                },
+                {
+                    caption: "Skibidi specimen opens pop-up escape room",
+                    tag: "Flush Quest",
+                    bodyLines: [
+                        "Teams solve plumbing riddles while dodging choreographed spray patterns.",
+                        "Mechanical engineering club offered to build expansions if given unlimited plungers.",
+                        "Legend says finishing under ten minutes grants VIP bathroom pass privileges."
+                    ],
+                    ticker: "Flush quest escape room sells out weeks in advance"
+                },
+                {
+                    caption: "Specimen piloting dorm tourism program",
+                    tag: "Porcelain Passport",
+                    bodyLines: [
+                        "Guided tours showcase top-tier stalls, legendary graffiti, and hydration stations.",
+                        "Orientation leaders relieved to have official toilet representation at last.",
+                        "Rumor says stamping your passport provides immunity from random flush jump scares."
+                    ],
+                    ticker: "Porcelain passport tours become hottest new student tradition"
                 }
             ]
         },
@@ -665,6 +1808,66 @@
                         "Any student denying the nugget's gospel gets pelted with stale tater tots on sight."
                     ],
                     ticker: "Nugget gospel hijacks campus radio graveyard slot"
+                },
+                {
+                    caption: "Nugget opens financial literacy boot camp",
+                    tag: "Breaded Budget",
+                    bodyLines: [
+                        "Attendees learn to diversify sauce investments and dodge impulse vending spends.",
+                        "Economics majors stunned the nugget predicted meal swipe inflation months ago.",
+                        "Legend says completing the course grants platinum swipe access at midnight."
+                    ],
+                    ticker: "Breaded budget seminar eliminates overdraft fees in one residence hall"
+                },
+                {
+                    caption: "Smiling nugget curates campus art exhibit",
+                    tag: "Fry Frame",
+                    bodyLines: [
+                        "Gallery features ketchup splatter canvases and interpretive sauce packets.",
+                        "Critics call it 'crispy postmodernism with a side of existential crunch'.",
+                        "Rumor says scanning the QR codes unlocks hidden recipes for feral focus."
+                    ],
+                    ticker: "Fry frame pop-up draws record donations and sauce trades"
+                },
+                {
+                    caption: "Nugget officiates inter-dorm peace treaty",
+                    tag: "Pax Platter",
+                    bodyLines: [
+                        "Signing ceremony included double dipping as a symbol of mutual trust.",
+                        "Rival dorm leaders offered ranch tributes while chanting 'we sauce together'.",
+                        "Legend says the treaty ensures unlimited waffle fry refills during finals."
+                    ],
+                    ticker: "Pax platter accord ends decades-long condiment cold war"
+                },
+                {
+                    caption: "Nugget launches mindfulness app",
+                    tag: "Breathe & Bread",
+                    bodyLines: [
+                        "Push notifications: 'inhale confidence, exhale crumbs'.",
+                        "Counseling center reports reduced stress thanks to guided sauce meditations.",
+                        "Rumor says enabling crispy mode generates ASMR crunch loops for deep focus."
+                    ],
+                    ticker: "Breathe & bread download count surpasses campus attendance"
+                },
+                {
+                    caption: "Smiling nugget hosts underground supper club",
+                    tag: "Secret Sauce",
+                    bodyLines: [
+                        "Entry password rotates between 'we munch' and 'bring napkins'.",
+                        "Menu includes deconstructed tater tot flights and existential dipping debates.",
+                        "Legend says sharing a table grants life-long immunity from bland meals."
+                    ],
+                    ticker: "Secret sauce society sells memberships faster than homecoming tix"
+                },
+                {
+                    caption: "Nugget pioneers sustainable fryer energy",
+                    tag: "Eco Crisp",
+                    bodyLines: [
+                        "Engineering majors helped rig a system where grease powers the dorm fairy lights.",
+                        "Green initiative awards the nugget a golden spatula for innovation.",
+                        "Rumor says volunteering earns you unlimited swipe of the eco-friendly garlic aioli."
+                    ],
+                    ticker: "Eco crisp rollout slashes cafeteria power bill by double digits"
                 }
             ]
         },
@@ -693,6 +1896,66 @@
                         "Rumor says completing its side quest grants +10 to assignment speedrunning."
                     ],
                     ticker: "Hoof dash clinic promises exam prep at supersonic velocity"
+                },
+                {
+                    caption: "Speed donkey launches late-night delivery service",
+                    tag: "HoofDash Prime",
+                    bodyLines: [
+                        "Orders arrive before you finish typing the address thanks to warp-hoof tech.",
+                        "Campus dining asked nicely for the donkey to stop outrunning meal robots.",
+                        "Legend says tipping with chili dogs unlocks priority boost for a week."
+                    ],
+                    ticker: "HoofDash prime breaks delivery time records across all dorms"
+                },
+                {
+                    caption: "Donkey opens time-trial obstacle course",
+                    tag: "Ring Road",
+                    bodyLines: [
+                        "Participants sprint through golden hula hoops while donkey commentators shout split times.",
+                        "PE credits now available for conquering the loop in under 45 seconds.",
+                        "Rumor says finding the hidden emerald grants zero-lag Wi-Fi in the basement."
+                    ],
+                    ticker: "Ring road challenge draws lines around the rec center at dawn"
+                },
+                {
+                    caption: "Blue donkey DJs chiptune remix night",
+                    tag: "Pixel Hoof",
+                    bodyLines: [
+                        "Set includes remastered Green Hill Zone layered with coconut-scented fog.",
+                        "Crowd discovered the donkey scratching records with actual horseshoes.",
+                        "Legend says requesting 'escape from the finals room' unlocks a hidden encore."
+                    ],
+                    ticker: "Pixel hoof rave forces library to extend quiet hours waiver"
+                },
+                {
+                    caption: "Donkey offers finals-week speed mentoring",
+                    tag: "Turbo TA",
+                    bodyLines: [
+                        "Sessions last three minutes but somehow cover the entire syllabus with memes.",
+                        "Professors grateful someone finally made kinetic pacing fashionable.",
+                        "Rumor says attending once lets you fast-forward through boring slides in real life."
+                    ],
+                    ticker: "Turbo TA donkey mentoring waitlist surpasses campus population"
+                },
+                {
+                    caption: "Speed donkey starts mindfulness sprint club",
+                    tag: "Zen Dash",
+                    bodyLines: [
+                        "Joggers inhale while counting rings and exhale to loop-de-loop affirmations.",
+                        "Wellness center skeptical until they saw the heart rate data glow.",
+                        "Legend says hitting stride with the donkey grants glitch-free mind palaces."
+                    ],
+                    ticker: "Zen dash sunrise runs become new campus cult classic"
+                },
+                {
+                    caption: "Donkey hosts cosplay repair pop-up",
+                    tag: "Hoof Stitch",
+                    bodyLines: [
+                        "Hot glue guns replaced horseshoes for the evening and nobody complained.",
+                        "Crafting club thrilled to share warp-speed sewing tips with the blue blur.",
+                        "Rumor says finishing repairs before sundown earns extra invincibility frames."
+                    ],
+                    ticker: "Hoof stitch workshop rescues thirty costumes ahead of con weekend"
                 }
             ]
         },
@@ -721,6 +1984,66 @@
                         "Rumor says gifting laser pointers unlocks stealth cuddle DLC."
                     ],
                     ticker: "Web crawler kitten captures the dean's attention mid-board meeting"
+                },
+                {
+                    caption: "Spider kitten opens express tutoring service",
+                    tag: "Pounce Prep",
+                    bodyLines: [
+                        "Students dangle questions on strings; the kitten answers with rapid-fire chirps.",
+                        "Grades spiked once the tutor started weaving mnemonic webs across whiteboards.",
+                        "Legend says tipping in catnip grants instant recall during finals."
+                    ],
+                    ticker: "Pounce prep tutoring breaks record for overnight grade turnarounds"
+                },
+                {
+                    caption: "Arachnicat DJs eight-track lo-fi set",
+                    tag: "Webstep",
+                    bodyLines: [
+                        "Turntables mounted on each paw produce surround-sound purr bass.",
+                        "Study lounge converted into neon jungle with yarn laser grids.",
+                        "Rumor says staying through the encore grants eight hours of uninterrupted focus."
+                    ],
+                    ticker: "Webstep lo-fi session becomes finals survival soundtrack"
+                },
+                {
+                    caption: "Kitten patrol issues hallway web passes",
+                    tag: "Thread Control",
+                    bodyLines: [
+                        "Residents must show proof of hydration to access the face-length threads.",
+                        "Custodial crews grateful the webs double as lost ID catchers.",
+                        "Legend says receiving a paw stamp guarantees safe passage until midnight."
+                    ],
+                    ticker: "Thread control checkpoints reduce hallway chaos to manageable levels"
+                },
+                {
+                    caption: "Spider kitty stars in campus horror-comedy",
+                    tag: "Creep & Cuddle",
+                    bodyLines: [
+                        "Film majors insisted on practical effects; the cat insisted on twelve treats.",
+                        "Premiere audience screamed then demanded plush merch immediately afterward.",
+                        "Rumor says watching twice in a row grants eight extra snooze minutes per morning."
+                    ],
+                    ticker: "Creep & cuddle midnight screening becomes instant cult classic"
+                },
+                {
+                    caption: "Kitten launches co-working web pods",
+                    tag: "Silk Seats",
+                    bodyLines: [
+                        "Students lounge in hammock cocoons while the cat monitors vibe compliance.",
+                        "Productivity soared as long as nobody spooked the yarn sensors.",
+                        "Legend says booking a pod guarantees zero laptop crashes for the session."
+                    ],
+                    ticker: "Silk seats co-working lounge adds extra pods due to 3AM demand"
+                },
+                {
+                    caption: "Spider kitten hosts midnight whisper choir",
+                    tag: "Eightfold Chorus",
+                    bodyLines: [
+                        "Participants hum lullabies while the cat pulses gentle bioluminescent whiskers.",
+                        "Residence hall noise complaints replaced with 'thank you' notes.",
+                        "Rumor says singing along grants eight simultaneous good luck charms."
+                    ],
+                    ticker: "Eightfold chorus lullaby nights become official stress relief event"
                 }
             ]
         },
@@ -749,6 +2072,66 @@
                         "Rumor says sliding it a cheese cube earns you one late fee forgiveness token."
                     ],
                     ticker: "Numbers gnaw rat releases fiscal year memes with zero emotion"
+                },
+                {
+                    caption: "Rat leads silent productivity sprint",
+                    tag: "Crunch Time",
+                    bodyLines: [
+                        "Participants type furiously while the rat judges posture and spreadsheet hygiene.",
+                        "Library declares the program shockingly effective despite zero pep talks.",
+                        "Legend says completing the sprint earns a solemn nod worth five GPA points."
+                    ],
+                    ticker: "Crunch time rat sprint fills every study seat before dawn"
+                },
+                {
+                    caption: "Rat opens forensic calculator lab",
+                    tag: "Audit Burrow",
+                    bodyLines: [
+                        "Mystery of the missing meal swipes solved in under twelve minutes with chalk diagrams.",
+                        "Campus detective club now meets exclusively in the rat's office nooks.",
+                        "Rumor says presenting your case with cheese samples expedites verdict delivery."
+                    ],
+                    ticker: "Audit burrow rat cracks notorious vending machine heist cold case"
+                },
+                {
+                    caption: "Stoic rat moderates roommate budget summit",
+                    tag: "Expense Council",
+                    bodyLines: [
+                        "Charts projected on walls while the rat taps a pointer with ominous precision.",
+                        "Disputes settled once everyone accepted the rat's line-item roast sessions.",
+                        "Legend says signing the agreement prevents impulse geode purchases for a month."
+                    ],
+                    ticker: "Expense council rat mediator hailed as campus hero of frugality"
+                },
+                {
+                    caption: "Rat logs cafeteria satisfaction metrics",
+                    tag: "Grim Taster",
+                    bodyLines: [
+                        "Each bite recorded with a disapproving squeak or a rare nod.",
+                        "Dining staff consider the feedback invaluable, if slightly terrifying.",
+                        "Rumor says matching its palate ensures premium dessert rations."
+                    ],
+                    ticker: "Grim taster rat publishes brutally honest dining hall scorecard"
+                },
+                {
+                    caption: "Rat curates minimalist meme gallery",
+                    tag: "Deadpan Display",
+                    bodyLines: [
+                        "Exhibit features black-and-white pie charts captioned 'lol'.",
+                        "Art critics call it a masterclass in subdued chaos energy.",
+                        "Legend says taking a silent selfie with the rat unlocks secret captions."
+                    ],
+                    ticker: "Deadpan display opening night draws record attendance for zero jokes"
+                },
+                {
+                    caption: "Rat teaches intro to poker face 101",
+                    tag: "Stone Seminar",
+                    bodyLines: [
+                        "Lesson one: blink less than the geese. Lesson two: reveal nothing, ever.",
+                        "The class final involves staring down the donkey NPC without flinching.",
+                        "Rumor says passing grants immunity to all future vibe checks."
+                    ],
+                    ticker: "Stone seminar graduates hailed as unstoppable in group projects"
                 }
             ]
         },
@@ -777,6 +2160,66 @@
                         "Rumor says gifting a thermos of kopi grants a shoutout during finals."
                     ],
                     ticker: "Sahur siren phone alerts trend as new campus alarm tone"
+                },
+                {
+                    caption: "Tungtung host adds drumline remix",
+                    tag: "Breakfast Beatdown",
+                    bodyLines: [
+                        "Percussion majors volunteer at ungodly hours just to ride the hype wave.",
+                        "Neighbors claimed the tempo cured their snooze button addiction instantly.",
+                        "Legend says recording the beat as your ringtone increases punctuality by 23%."
+                    ],
+                    ticker: "Breakfast beatdown reruns rank as top wake-up playlist"
+                },
+                {
+                    caption: "Tungtung opens merch booth at 4:01 AM",
+                    tag: "Siren Drip",
+                    bodyLines: [
+                        "Limited edition hoodies read 'I survived the dawn drop'.",
+                        "Reselling is banned; the host personally yells at price gougers via megaphone.",
+                        "Rumor says wearing the drip grants immunity to participation cold calls."
+                    ],
+                    ticker: "Siren drip pop-up sells out before sunrise hits the clock tower"
+                },
+                {
+                    caption: "Tungtung collabs with cafeteria",
+                    tag: "Sahur Buffet",
+                    bodyLines: [
+                        "Menu features spicy noodles engineered to match the host's decibel level.",
+                        "Sleeping students awoke to the smell of nasi lemak and pure adrenaline.",
+                        "Legend says finishing the combo meal unlocks unstoppable 9AM focus."
+                    ],
+                    ticker: "Sahur buffet line wraps around block in under six minutes"
+                },
+                {
+                    caption: "Tungtung announces scholarship for loud dreamers",
+                    tag: "Mega Grant",
+                    bodyLines: [
+                        "Applicants submit voice notes explaining how they'd hype the dawn shift.",
+                        "Financial aid office genuinely touched by the unhinged sincerity.",
+                        "Rumor says finalists receive custom earplugs embroidered with motivational quotes."
+                    ],
+                    ticker: "Mega grant competition generates 800 screaming submissions"
+                },
+                {
+                    caption: "Tungtung leads sunrise flash workout",
+                    tag: "Decibel Drills",
+                    bodyLines: [
+                        "Participants do high knees synced to megaphone cadences.",
+                        "Campus rec recorded the highest energy output ever at dawn.",
+                        "Legend says surviving the cool down keeps you awake for 36 hours straight."
+                    ],
+                    ticker: "Decibel drills session fills entire green before first class"
+                },
+                {
+                    caption: "Tungtung installs hotline for sleepy professors",
+                    tag: "Faculty Wake",
+                    bodyLines: [
+                        "Professors can request custom hype intros before entering lecture halls.",
+                        "Students rating classes based on megaphone cameo frequency.",
+                        "Rumor says overusing the hotline summons an all-staff kazoo parade."
+                    ],
+                    ticker: "Faculty wake hotline causes 8AM attendance to spike dramatically"
                 }
             ]
         },
@@ -805,6 +2248,66 @@
                         "Rumor says flushing while he chants summons extra credit (terms apply)."
                     ],
                     ticker: "Inferno throne featured in sustainability zine as chaotic good"
+                },
+                {
+                    caption: "Wizard debuts bathroom potion tasting",
+                    tag: "Lavatory Libations",
+                    bodyLines: [
+                        "Flavors include 'spicy lavender' and 'midterm mercy'.",
+                        "Participants required to sign waivers acknowledging possible sparkle side effects.",
+                        "Legend says sipping the gold potion grants temporary resistance to pop quizzes."
+                    ],
+                    ticker: "Lavatory libations tour books solid for entire semester"
+                },
+                {
+                    caption: "Flame wizard publishes restroom etiquette grimoire",
+                    tag: "Basin Codex",
+                    bodyLines: [
+                        "Rule one: luminate candles clockwise; rule two: never question the steam.",
+                        "Facilities begrudgingly added the codex to official policy after several portents.",
+                        "Legend says memorizing chapter four unlocks infinite paper towel respawns."
+                    ],
+                    ticker: "Basin codex becomes required reading for restroom monitors"
+                },
+                {
+                    caption: "Wizard offers finals week stress incineration",
+                    tag: "Burnout Banisher",
+                    bodyLines: [
+                        "Students toss syllabi into magical flames and scream quietly.",
+                        "Counselors approve as long as nobody throws actual homework in there.",
+                        "Rumor says the ash transforms into extra credit coupons under moonlight."
+                    ],
+                    ticker: "Burnout banisher ritual extended due to overwhelming demand"
+                },
+                {
+                    caption: "Bathroom wizard announces flush-based transportation",
+                    tag: "Portal Porcelain",
+                    bodyLines: [
+                        "Commuters step into the stall and emerge near their next class—mostly.",
+                        "Transit authority politely asked him to stop bending space without a permit.",
+                        "Legend says carrying a rubber duck stabilizes your coordinates."
+                    ],
+                    ticker: "Portal porcelain commute option briefly approved then reconsidered"
+                },
+                {
+                    caption: "Wizard collaborates with theatre club",
+                    tag: "Stage Flush",
+                    bodyLines: [
+                        "New production features pyro toilets and ballads about proper handwashing.",
+                        "Ticket sales skyrocketed once people saw the charmed bidet choreography.",
+                        "Rumor says shouting encore triggers a glitter geyser visible from the quad."
+                    ],
+                    ticker: "Stage flush musical wins spontaneous standing ovations nightly"
+                },
+                {
+                    caption: "Wizard hosts quiet hours for introverts",
+                    tag: "Still Flame",
+                    bodyLines: [
+                        "Fire crackles softly while patrons read bathroom graffiti like prophetic sonnets.",
+                        "Noise complaints drop dramatically whenever the still flame sign appears.",
+                        "Legend says journaling beside the calm blaze locks in your goals subconsciously."
+                    ],
+                    ticker: "Still flame sanctuary earns campus wellness award"
                 }
             ]
         },
@@ -833,6 +2336,66 @@
                         "Rumor says knocking twice unlocks the cinnamon roll expansion pack."
                     ],
                     ticker: "Carb cartel breead truck sells out before sunrise"
+                },
+                {
+                    caption: "Breead lab opens sourdough think tank",
+                    tag: "Crumb Council",
+                    bodyLines: [
+                        "Members debate hydration percentages like it's UN diplomacy.",
+                        "Economics majors modeling the crust elasticity as market volatility.",
+                        "Legend says attending guarantees perfect toaster settings for life."
+                    ],
+                    ticker: "Crumb council summit trends as hottest late-night study break"
+                },
+                {
+                    caption: "Breead duo releases scented candle line",
+                    tag: "Proof Positive",
+                    bodyLines: [
+                        "Scents include 'Breaking Baguette' and 'Overproofed Plot Twist'.",
+                        "Campus store sold out immediately; maintenance reported zero regrets.",
+                        "Rumor says lighting two candles simultaneously raises roommates' vibes 30%."
+                    ],
+                    ticker: "Proof positive candle drop melts student union credit card readers"
+                },
+                {
+                    caption: "Chem lab crossovers continue with gluten reactor",
+                    tag: "Lab Loaf",
+                    bodyLines: [
+                        "Safety goggles required but aprons optional according to the duo.",
+                        "Dean begged them to stop naming experiments after bread-based puns.",
+                        "Legend says tasting the prototype adds +5 resilience to pop quizzes."
+                    ],
+                    ticker: "Lab loaf demonstration draws both foodies and physics majors"
+                },
+                {
+                    caption: "Breead caters midnight finals vigil",
+                    tag: "Yeast Feast",
+                    bodyLines: [
+                        "Loaves stamped with motivational quotes like 'rise & grind (literally)'.",
+                        "Library ventilation now smells suspiciously like cinnamon victory.",
+                        "Rumor says hugging a warm loaf prevents tears during cram sessions."
+                    ],
+                    ticker: "Yeast feast vigil becomes tradition for all-nighter survival"
+                },
+                {
+                    caption: "Breead duo launches ASMR crackle channel",
+                    tag: "Crunch Stream",
+                    bodyLines: [
+                        "Viewers claim the crust snaps cured their scroll addiction temporarily.",
+                        "Audio engineering club impressed by the crumb's dynamic range.",
+                        "Legend says falling asleep to the stream yields perfectly proofed dreams."
+                    ],
+                    ticker: "Crunch stream subscriber count surpasses dining hall newsletter"
+                },
+                {
+                    caption: "Breead truck partners with art club",
+                    tag: "Loaf Gallery",
+                    bodyLines: [
+                        "Each baguette comes with edible paint pens for expressive crust doodles.",
+                        "Studio majors call it 'starch installation' and immediately submit to exhibitions.",
+                        "Rumor says winning the weekly art throwdown earns free carbs for a month."
+                    ],
+                    ticker: "Loaf gallery pop-up creates line stretching past Baker lawn"
                 }
             ]
         },
@@ -861,6 +2424,66 @@
                         "Rumor says offering tuna unlocks the stealth cuddle animation."
                     ],
                     ticker: "Cozy coil serpent cat opens waitlist for cuddle slots"
+                },
+                {
+                    caption: "Serpentine cat teaches stress management",
+                    tag: "Zen Coil",
+                    bodyLines: [
+                        "Workshops include slow slither breathing and tactical purring.",
+                        "Wellness center amazed at the drop in hallway hissy fits.",
+                        "Legend says completing the course grants slipper teleportation privileges."
+                    ],
+                    ticker: "Zen coil seminar becomes hottest ticket during midterms"
+                },
+                {
+                    caption: "Cat-snake guards dorm snack stash",
+                    tag: "Coil Patrol",
+                    bodyLines: [
+                        "Would-be snack thieves turn around when faced with 12 feet of unimpressed feline.",
+                        "RAs relieved the enforcement requires zero paperwork beyond sardine tribute records.",
+                        "Rumor says winning trust earns a gold-plated ramen keycard."
+                    ],
+                    ticker: "Coil patrol reduces snack heists to all-time low"
+                },
+                {
+                    caption: "Snekat stars in campus fashion show",
+                    tag: "Boa Couture",
+                    bodyLines: [
+                        "Runway draped in velvet while the cat slither-struts to synthwave.",
+                        "Designers highlight the efficiency of one continuous accessory.",
+                        "Legend says brushing the sequined scales grants unstoppable outfit confidence."
+                    ],
+                    ticker: "Boa couture finale triggers standing ovation from entire art department"
+                },
+                {
+                    caption: "Cat-snake opens coil cafe",
+                    tag: "Spiral Latte",
+                    bodyLines: [
+                        "Order window shaped like a terrarium; drinks swirl naturally thanks to tail twirls.",
+                        "Latte art features perfect whisker patterns despite the snake mechanics.",
+                        "Rumor says the loyalty program offers nine lives worth of free refills."
+                    ],
+                    ticker: "Spiral latte cafe now required stop on campus food crawl"
+                },
+                {
+                    caption: "Snekat organizes hallway conga line",
+                    tag: "Slinky Parade",
+                    bodyLines: [
+                        "Participants follow the undulating beat while RA claps in confusion.",
+                        "Music major replaced the usual playlist with a 20-minute meowwave loop.",
+                        "Legend says joining the parade grants sudden ability to dodge geese gracefully."
+                    ],
+                    ticker: "Slinky parade blocks elevators but boosts morale exponentially"
+                },
+                {
+                    caption: "Serpent cat curates cozy blanket fort",
+                    tag: "Nest Mode",
+                    bodyLines: [
+                        "Stacked pillows arranged into perfect coil-friendly cushions.",
+                        "Residents line up to read inside the warm tunnel while rain taps outside.",
+                        "Rumor says sharing snacks within the nest ensures top-tier nap quality."
+                    ],
+                    ticker: "Nest mode lounge doubles as unofficial emotional support bunker"
                 }
             ]
         },
@@ -889,6 +2512,66 @@
                         "Rumor says high-fiving him upgrades your ID card to elite scream tier."
                     ],
                     ticker: "Sulley adjacent hype night surpasses homecoming attendance"
+                },
+                {
+                    caption: "Mike runs pop-up study scream sessions",
+                    tag: "Finals Roar",
+                    bodyLines: [
+                        "Students release stress via carefully curated shrieks timed to power chords.",
+                        "Counselors confirm the acoustics are oddly therapeutic despite eardrum warnings.",
+                        "Legend says reaching octave seven grants automatic curve forgiveness."
+                    ],
+                    ticker: "Finals roar scream lab fills Alden courtyard nightly"
+                },
+                {
+                    caption: "Cyclops coach debuts single-eye mindfulness course",
+                    tag: "Focus Sphere",
+                    bodyLines: [
+                        "Attendees practice staring at one bullet point until it ascends to main quest status.",
+                        "Psych majors thrilled to record heart rate drops mid-gaze.",
+                        "Rumor says graduating the course gives you x-ray vision for exam hints."
+                    ],
+                    ticker: "Focus sphere intensives sell out faster than campus yoga"
+                },
+                {
+                    caption: "Mike spearheads campus pep rally",
+                    tag: "Scream Squad",
+                    bodyLines: [
+                        "Cheer team adapted choreography to include one-eyed high kicks.",
+                        "Mascot union proud the rally finally features equal parts roar and wholesome chaos.",
+                        "Legend says chanting along adds +20 charisma for the rest of the day."
+                    ],
+                    ticker: "Scream squad pep rally reaches record decibel levels"
+                },
+                {
+                    caption: "Cyclops hosts midnight film festival",
+                    tag: "One Eye Cinema",
+                    bodyLines: [
+                        "Screenings curated exclusively for maximum pupil dilation effects.",
+                        "Film majors analyzing the single-eye commentary track for hidden lore.",
+                        "Rumor says staying for the 3AM showing unlocks glow-in-the-dark popcorn."
+                    ],
+                    ticker: "One eye cinema marathon demands extra projector bulbs"
+                },
+                {
+                    caption: "Mike Wazowskey drops fitness challenge",
+                    tag: "Cyclops Circuit",
+                    bodyLines: [
+                        "Workout includes eyeball planks and scream intervals timed to EDM drops.",
+                        "Campus rec adjusting HVAC after humidity spikes from collective roars.",
+                        "Legend says finishing the circuit once a week grants unstoppable hallway swagger."
+                    ],
+                    ticker: "Cyclops circuit challenge trending as feral alternative to spin class"
+                },
+                {
+                    caption: "Mike opens scream-powered coffee truck",
+                    tag: "Roast & Roar",
+                    bodyLines: [
+                        "Baristas convert loud encouragement into espresso shots on demand.",
+                        "Line wraps around the union because the latte art winks at you.",
+                        "Rumor says ordering with a whisper triggers a free refill out of pity."
+                    ],
+                    ticker: "Roast & roar caffeine truck becomes finals-week lifeline"
                 }
             ]
         },
@@ -979,29 +2662,50 @@
         { level: 74, label: "Quad squirrels forming council to regulate picnic table usage" },
         { level: 82, label: "Unexpected kazoo parade rerouted three lecture halls" },
         { level: 57, label: "Campus cops chasing rumors of teleporting vending machines" },
-        { level: 68, label: "Art building glowing neon due to experimental meme installation" }
+        { level: 68, label: "Art building glowing neon due to experimental meme installation" },
+        { level: 84, label: "Emergency taco truck pilgrimage causing gridlock on Court Street" },
+        { level: 66, label: "Mystery fog machine activating under the library grand stairwell" },
+        { level: 93, label: "Dorm hallway drumline refuses to yield between 1 and 4 AM" },
+        { level: 59, label: "Sustainability club swapping every trash can for glitter portals" },
+        { level: 87, label: "Uno reverse tournament escalating into full-blown senate hearing" },
+        { level: 72, label: "Campus squirrels launched influencer brand deal with the geese" }
     ];
 
-    const TRENDING_RITUALS = [
-        "3 AM hydration circle chanting about iced coffee loyalty",
-        "Professor summoning circle scheduled in Alden stairwell C",
-        "Rizzy roomies host nightly powerpoint roast in lounge B",
-        "Study break flash mob practicing the Ohio wobble remix",
-        "Quad chalkboard now dedicated to citing obscure meme law",
-        "Silent disco in the laundry room until the dryers revolt",
-        "Emergency group chat deploying emotional support possum",
-        "Dorm karaoke swaps lyrics for Canvas announcements",
-        "Library rooftop believed to house secret nugget conclave",
-        "Dining hall table six petitioning for permanent lore hour",
-        "Torchlight pilgrimage to the only functioning microwave on West Green",
-        "Midnight potluck where everyone brings their favorite campus conspiracy",
-        "Lecture hall B hosts silent scream therapy before every exam",
-        "Residence hall tarot night decides who restocks the snack drawer",
-        "Group chat assigns spirit animals based on coffee order aesthetics",
-        "Wellness club now doing aura cleansing with Doritos dust",
-        "Gamma lounge installs disco ball for impromptu syllabus rave",
-        "Engineering majors speedrun building blanket forts in the atrium",
-        "Skate crew drafts treaty with geese to share the sidewalks"
+    const DORM_LORE_HOTLINE = [
+        "Room 314 swears the mini fridge whispers 'we ball' at 3AM sharp.",
+        "Laundry room 2A currently haunted by a glowing sock demanding tribute.",
+        "Hallway whiteboard now a live scoreboard for microwave noodle speed-runs.",
+        "East wing reports mysterious Baja Blast drip discovered in the ceiling vents.",
+        "Resident cat allegedly unlocked the fire alarm just to drop a new synthwave mix.",
+        "RA confiscated seven scooters from a midnight 'Mario Kart' tournament in the lobby.",
+        "Someone turned the vending machine into a confession booth—insert $1 to spill tea.",
+        "CompSci majors claim the elevator is sentient and ships random floor combinations.",
+        "Dorm Wi-Fi password now rotates hourly based on the meme of the day.",
+        "Legend says knocking three times on the broom closet opens a secret Baja lounge.",
+        "Basement lounge projector stuck looping Ohio cryptid documentaries until finals.",
+        "Roommate treaty requires daily affirmation circle plus communal bagel tribute.",
+        "Fourth floor hallway instituted a no-shoes-but-crocs rule to appease the vibe gods.",
+        "Mystery student keeps leaving hand-labeled 'emotional support ravioli' in the fridge.",
+        "Fire exit stairwell transformed into unofficial late-night karaoke booth.",
+        "Someone reprogrammed the thermostat to display horoscope advice instead of temperatures.",
+        "Hall slack channel blown up by rumors of a rogue Roomba recruiting for pillow fort duty.",
+        "Legendary inflatable couch resurfaced and now floats between common rooms like a specter.",
+        "Dorm group chat currently voting whether the toaster deserves hall council representation.",
+        "All quiet hours suspended after ghost printer started dispensing cryptic study guides.",
+        "Rumor says knocking pattern 2-1-3 on room 909 summons an NPC who trades snacks for lore.",
+        "Hydration station allegedly dispensing Baja Blast every third refill—investigation pending.",
+        "Mailroom overflowed because everyone ordered the same limited-edition sigma plushie.",
+        "Hallway light flickers Morse code that perfectly predicts pop quiz schedules.",
+        "Dorm lobby fish tank allegedly hosts weekly therapy sessions for overcaffeinated majors.",
+        "Someone installed a disco ball in the study lounge and now it's a silent rave zone nightly.",
+        "Legend says sitting on the beanbag throne grants immunity from 8AM labs for 24 hours.",
+        "Basement freezer full of go-gurts labeled 'for emergency rizz deployment only'.",
+        "Elevator mirror allegedly shows your final grade curve if you practice your presentation.",
+        "Hallway air freshener mysteriously cycles through scents named after campus lore arcs.",
+        "Every Tuesday, the dorm PA plays whale sounds because someone said it boosts GPA by 2%.",
+        "Resident cryptid left sticky notes with clues leading to a hidden stash of study snacks.",
+        "Someone keeps swapping door name tags with their NPC alter-egos and it's absolute chaos.",
+        "Lobby whiteboard now tracks 'microwave arc of shame' for anyone burning popcorn after midnight."
     ];
 
     const BRIEFING_LINES = [
@@ -1064,7 +2768,12 @@
         { handle: "@campusoracle", message: "tarot pulled three cups and one Baja Blast" },
         { handle: "@lateNightScoops", message: "ice cream machine is working?? repeat, working" },
         { handle: "@studybreakhero", message: "set up a pillow fort in Alden if anyone needs it" },
-        { handle: "@npc_on_duty", message: "saw gigachad cat holding a press conference again" }
+        { handle: "@npc_on_duty", message: "saw gigachad cat holding a press conference again" },
+        { handle: "@chaosRegistrar", message: "we now offer extra credit for surviving the quad kazoo parade" },
+        { handle: "@monstermonk", message: "campus chapel doing midnight Monster tastings send help" },
+        { handle: "@laundrycryptid", message: "dryer 5 just spit out a glowing sock and called me king" },
+        { handle: "@studyRoomGoblin", message: "claimed study room beta we duel at dawn for the projector" },
+        { handle: "@vibeInspector", message: "issuing citations for unlicensed sigma energy in the cafe" }
     ];
 
     const MAX_CHAT_LINES = 2;
@@ -1198,7 +2907,7 @@
         constructor(feedElement) {
             this.feed = feedElement;
             this.translateY = 0;
-            this.speed = CONFIG.animationSpeed * 60;
+            this.speed = SCROLL_SPEED;
             this.gap = 32;
             this.running = false;
             this.frameRequest = null;
@@ -1215,9 +2924,7 @@
             const gapValue = parseInt(styles.getPropertyValue("gap"), 10);
             this.gap = Number.isNaN(gapValue) ? 32 : gapValue;
 
-            this.feed.style.willChange = "transform";
-
-            for (let index = 0; index < CONFIG.initialPostCount; index += 1) {
+            for (let index = 0; index < INITIAL_POST_COUNT; index += 1) {
                 this.feed.appendChild(this.createPost());
             }
 
@@ -1338,8 +3045,7 @@
             if (imageRotator.hasItems()) {
                 const selection = imageRotator.next();
                 if (selection && selection.variant) {
-                    const payload = buildImageMedia(selection.item, selection.variant);
-                    const mediaElement = payload.element;
+                    const mediaElement = buildImageMedia(selection.item, selection.variant);
                     const mediaImages = mediaElement.querySelectorAll("img");
                     mediaImages.forEach((img) => {
                         img.addEventListener("load", () => {
@@ -1418,7 +3124,7 @@
                 return;
             }
             this.update();
-            this.timer = window.setInterval(() => this.update(), CONFIG.tickerIntervalMs);
+            this.timer = window.setInterval(() => this.update(), TICKER_INTERVAL_MS);
         }
 
         update() {
@@ -1431,7 +3137,7 @@
         constructor(elements) {
             this.chaosBar = elements.chaosBar;
             this.chaosLabel = elements.chaosLabel;
-            this.ritualList = elements.ritualList;
+            this.loreList = elements.loreList;
             this.briefingList = elements.briefingList;
             this.forecastList = elements.forecastList;
             this.chatStream = elements.chatStream;
@@ -1442,7 +3148,7 @@
         init() {
             const hasAny = Boolean(
                 this.chaosBar ||
-                this.ritualList ||
+                this.loreList ||
                 this.briefingList ||
                 this.forecastList ||
                 this.chatStream
@@ -1457,9 +3163,9 @@
                 window.setInterval(() => this.updateChaos(), Math.round(9000 * INTERVAL_SCALE));
             }
 
-            if (this.ritualList) {
-                this.updateRituals();
-                window.setInterval(() => this.updateRituals(), Math.round(16000 * INTERVAL_SCALE));
+            if (this.loreList) {
+                this.updateLore();
+                window.setInterval(() => this.updateLore(), Math.round(16000 * INTERVAL_SCALE));
             }
 
             if (this.briefingList) {
@@ -1488,12 +3194,12 @@
             this.chaosLabel.textContent = entry.label;
         }
 
-        updateRituals() {
-            if (!this.ritualList) {
+        updateLore() {
+            if (!this.loreList) {
                 return;
             }
-            const items = shuffleArray(TRENDING_RITUALS).slice(0, 4);
-            this.renderList(this.ritualList, items);
+            const items = shuffleArray(DORM_LORE_HOTLINE).slice(0, 4);
+            this.renderList(this.loreList, items);
         }
 
         updateBriefings() {
@@ -1636,7 +3342,7 @@
         caption.textContent = variant && variant.caption ? variant.caption : "Transmission incoming";
         figure.appendChild(caption);
 
-        return { element: figure };
+        return figure;
     }
 
     function buildFooter() {
@@ -1733,9 +3439,15 @@
 
         const update = () => {
             const now = new Date();
-            const hours = now.getHours().toString().padStart(2, "0");
+            let hours = now.getHours();
+            const suffix = hours >= 12 ? "PM" : "AM";
+            hours = hours % 12;
+            if (hours === 0) {
+                hours = 12;
+            }
+            const hourText = hours.toString();
             const minutes = now.getMinutes().toString().padStart(2, "0");
-            clockElement.textContent = hours + ":" + minutes;
+            clockElement.textContent = hourText + ":" + minutes + " " + suffix;
         };
 
         update();
@@ -1761,7 +3473,7 @@
         const sidePanels = new SidePanels({
             chaosBar: document.getElementById("chaos-meter"),
             chaosLabel: document.getElementById("chaos-label"),
-            ritualList: document.getElementById("ritual-list"),
+            loreList: document.getElementById("lore-list"),
             briefingList: document.getElementById("briefing-list"),
             forecastList: document.getElementById("forecast-list"),
             chatStream: document.getElementById("chat-stream")
