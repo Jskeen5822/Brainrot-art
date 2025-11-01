@@ -1215,6 +1215,8 @@
             const gapValue = parseInt(styles.getPropertyValue("gap"), 10);
             this.gap = Number.isNaN(gapValue) ? 32 : gapValue;
 
+            this.feed.style.willChange = "transform";
+
             for (let index = 0; index < CONFIG.initialPostCount; index += 1) {
                 this.feed.appendChild(this.createPost());
             }
@@ -1264,31 +1266,62 @@
                 this.lastTimestamp = timestamp;
             }
 
-            const deltaSeconds = (timestamp - this.lastTimestamp) / 1000;
+            const deltaSecondsRaw = (timestamp - this.lastTimestamp) / 1000;
+            const deltaSeconds = Math.min(deltaSecondsRaw, 0.2);
             this.lastTimestamp = timestamp;
 
             const distance = this.speed * deltaSeconds;
             this.translateY -= distance;
-            this.feed.style.transform = "translateY(" + this.translateY + "px)";
+            this.feed.style.transform = "translate3d(0, " + this.translateY + "px, 0)";
 
-            const firstPost = this.feed.firstElementChild;
-            if (firstPost) {
-                const firstHeight = firstPost.getBoundingClientRect().height;
-                const threshold = firstHeight + this.gap;
-                if (Math.abs(this.translateY) >= threshold) {
-                    this.translateY += threshold;
-                    this.feed.style.transform = "translateY(" + this.translateY + "px)";
-                    firstPost.remove();
-                    this.feed.appendChild(this.createPost());
+            let firstPost = this.feed.firstElementChild;
+            while (firstPost) {
+                const threshold = this.getPostHeight(firstPost) + this.gap;
+                if (-this.translateY < threshold) {
+                    break;
                 }
+
+                this.translateY += threshold;
+                this.feed.style.transform = "translate3d(0, " + this.translateY + "px, 0)";
+                firstPost.remove();
+                const newPost = this.createPost();
+                this.feed.appendChild(newPost);
+                firstPost = this.feed.firstElementChild;
             }
 
             this.frameRequest = window.requestAnimationFrame((nextTimestamp) => this.tick(nextTimestamp));
         }
 
+        getPostHeight(element) {
+            if (!element) {
+                return 0;
+            }
+
+            const cached = element.dataset.cachedHeight;
+            const needsRefresh = element.dataset.needsHeightRefresh === "true";
+
+            if (cached && !needsRefresh) {
+                const parsed = Number.parseFloat(cached);
+                return Number.isNaN(parsed) ? 0 : parsed;
+            }
+
+            const measured = element.getBoundingClientRect().height;
+            element.dataset.cachedHeight = String(measured);
+            element.dataset.needsHeightRefresh = "false";
+            return measured;
+        }
+
+        markHeightDirty(element) {
+            if (!element) {
+                return;
+            }
+            element.dataset.needsHeightRefresh = "true";
+        }
+
         createPost() {
             const article = document.createElement("article");
             article.className = "post";
+            article.dataset.needsHeightRefresh = "true";
 
             const header = this.buildHeader();
             article.appendChild(header);
@@ -1306,7 +1339,14 @@
                 const selection = imageRotator.next();
                 if (selection && selection.variant) {
                     const payload = buildImageMedia(selection.item, selection.variant);
-                    article.appendChild(payload.element);
+                    const mediaElement = payload.element;
+                    const mediaImages = mediaElement.querySelectorAll("img");
+                    mediaImages.forEach((img) => {
+                        img.addEventListener("load", () => {
+                            this.markHeightDirty(article);
+                        });
+                    });
+                    article.appendChild(mediaElement);
                     mediaContext = selection.variant;
                 }
             }
