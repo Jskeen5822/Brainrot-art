@@ -41,26 +41,26 @@
         openers: [
             "POV:",
             "Live footage of",
-            "Bro thinks he is",
             "Only in Ohio:",
+            "Campus alert:",
             "No one:",
             "Breaking:",
             "Witness the",
             "Someone said",
-            "Campus alert:",
-            "Ohio weather be like"
+            "Ohio weather be like",
+            "Meanwhile in Alden:"
         ],
         scenarios: [
-            "Alden Library becoming a level 99 raid",
+            "study group turning into a lore drop",
             "the printer initiating a boss fight",
             "mascot speed-running the rizz meta",
-            "study group turning into a lore drop",
+            "cafeteria releasing limited edition Skibidi",
             "professor unlocking secret NPC dialogue",
             "frat house launching a side quest",
-            "cafeteria releasing limited edition Skibidi",
             "quad transforming into a sigma training arc",
-            "student hitting a plot twist mid-scroll",
-            "late-night diner summoning ohio core energy"
+            "dorm hallway summoning ambient chaos",
+            "late-night diner channeling ohio core energy",
+            "geese union announcing another vibecession"
         ],
         closers: [
             "and I fear it is canon now",
@@ -69,15 +69,14 @@
             "fr fr trust",
             "we are so back",
             "nah because this cooked",
-            "cannot keep doing this",
             "campus is not ready",
             "somebody clip that",
-            "Ohio NPCs stay winning"
+            "Ohio NPCs stay winning",
+            "mods asleep post more brainrot"
         ],
         highlights: [
             "<strong>Only in Ohio</strong>",
             "<strong>Certified Brainrot</strong>",
-            "<strong>Breaking Brainwave</strong>",
             "<strong>Sigma Intel Drop</strong>",
             "<strong>NPC Transmission</strong>",
             "<strong>Rizz Alert</strong>",
@@ -85,7 +84,6 @@
             "<strong>Campus Lore Drop</strong>",
             "<strong>Brainwave Bulletin</strong>",
             "<strong>NPC Alert</strong>",
-            "<strong>Sigma Situation</strong>",
             "<strong>Doomscroll Dispatch</strong>"
         ]
     };
@@ -2810,174 +2808,248 @@
     ];
 
     const BADGES = [
-        "Breaking Brainrot",
-        "Trend Alert",
-        "Ohio Core",
-        "Rizz Advisory",
-        "NPC Sighting",
-        "Campus Exclusive"
+        "Sponsored",
+        "Limited Drop",
+        "Dorm Exclusive",
+        "Paid Placement",
+        "Boosted",
+        "Affiliate Link"
+    ];
+
+    const AD_LIBRARY = [
+        {
+            id: "capybara-lounge",
+            handle: "@CapyHydrate",
+            label: "Dorm Commerce",
+            avatar: null,
+            badge: "Sponsored",
+            headline: "Capybara Hydration Concierge",
+            subhead: "Dorm package includes coconut vapor and ambient lo-fi drip.",
+            bullets: [
+                "Resident reviews average 4.9 hydration emojis after one session.",
+                "Includes unlimited cucumber water refills during cram week.",
+                "Bundle unlocks priority seating on all courtyard hammocks."
+            ],
+            cta: "Tap to Hydrate",
+            urgency: "Offer ends before finals-week meltdown.",
+            disclaimer: "Disclaimer: Capybara not responsible for spilled Baja Blast.",
+            url: "https://example.com/capyhydrate"
+        },
+        {
+            id: "frog-commute",
+            handle: "@FrogTireClub",
+            label: "Campus Transit",
+            avatar: null,
+            badge: "Promoted",
+            headline: "Frog-Tire Commute Pass",
+            subhead: "Skip the shuttle – bounce to class in neon style.",
+            bullets: [
+                "Includes weekly tire shine and motivational ribbits on demand.",
+                "Earn loyalty points every time you stick the landing outside Alden.",
+                "First lap free for anyone carrying iced coffee and a dream."
+            ],
+            cta: "Join the Bounce",
+            urgency: "Limited to first 64 sign-ups this weekend.",
+            disclaimer: "Helmet, kazoo, and playlist sold separately.",
+            url: "https://example.com/frogtire"
+        },
+        {
+            id: "banana-masterclass",
+            handle: "@BananaMicPro",
+            label: "Campus Creators",
+            avatar: null,
+            badge: "Sponsored",
+            headline: "Banana Mic Masterclass",
+            subhead: "Unlock potassium-powered riffs for every group presentation.",
+            bullets: [
+                "Syllabus includes rhyme schemes, hype strategies, and peel care.",
+                "Comes with downloadable soundboard for instant crowd gasps.",
+                "Graduates report 120% boost in participation grades."
+            ],
+            cta: "Reserve Your Mic",
+            urgency: "Enrollment closes when the dean notices.",
+            disclaimer: "Banana may double as emotional support snack.",
+            url: "https://example.com/bananamic"
+        },
+        {
+            id: "therapy-dog-cape",
+            handle: "@GlowHandlerCo",
+            label: "Campus Wellness",
+            avatar: null,
+            badge: "Paid Placement",
+            headline: "Therapy Dog Cape Upgrade",
+            subhead: "Wrap finals stress in glow-in-the-dark reassurance.",
+            bullets: [
+                "Cape hums low-fi hype whenever exam panic spikes.",
+                "Includes emergency stash of affirmations under the collar.",
+                "Unlocks priority cuddle queue during midnight study sessions."
+            ],
+            cta: "Add Warm Fuzzies",
+            urgency: "Restock alert: next batch arrives after syllabus week.",
+            disclaimer: "Results improve when accompanied by snacks.",
+            url: "https://example.com/therapycape"
+        }
+    ];
+
+    const SURVEY_QUESTIONS = [
+        "How emotionally prepared are you to stop seeing capybaras in sponsored content?",
+        "Would a frog-commute stipend improve your relationship with this brand?",
+        "Which roommate should we retarget after you close this ad?",
+        "How likely are you to dream about this CTA between 2 and 4 AM?",
+        "Be honest: would a glow-in-the-dark dog cape solve midterms for you?",
+        "What flavor of influencer coupon best matches your current vibe?",
+        "If this ad vanished, how would you discover your next potassium guru?",
+        "On a scale of 1-10, how clickable was this headline after three scrolls?"
     ];
 
     const BASE_TICKER_LINES = [
-        "Sigma sightings up 300 percent near Alden Library",
-        "Campus wifi allegedly became self-aware at 3:12 AM",
-        "New rizz patch notes leaked from the dining hall",
-        "Study group accidentally summons Skibidi event",
-        "Ohio weather unlocks secret NPC dialogue options",
-        "Final boss professor drops limited edition lore",
-        "Library printer demands tribute in Baja Blast",
-        "Dorm 403 hosts underground meme think tank",
-        "Quad renamed to Gigachad Plaza for 24 hours",
-        "University issues advisory for rogue doomscroll",
-        "Geese union announces strike over bagel rationing",
-        "Residence halls issue alert for rogue nugget preacher",
-        "Coffee lab unveils ethically sourced chaos concentrate",
-        "Campus shuttle reported traveling through alternate timeline",
-        "Registrar loses count after students submit meme majors",
-        "Library basement rave extends hours past sunrise again",
-        "Dining hall debuts limited Baja Blast reduction sauce",
-        "Student senate debates mandatory vibe checks before finals",
-        "Alden printer declares independence, demands toner rights",
-        "Administration warns of emotional support possum sightings"
+        "Tap now: campus capybara hydration kit promises finals immunity",
+        "Limited drop: banana-backed crypto claims to waive late fees",
+        "Advertorial: frog-tire shuttle paying triple work-study in loyalty points",
+        "Promoted story: LeBron poster whispers motivational coupon codes",
+        "Sponsored thread: dorm geese launch subscription-based vibe checks",
+        "Flash alert: vending machine guru sells guaranteed A-minus templates",
+        "Viral ad: emotional support brick now bundled with mindfulness app trial",
+        "Clickbait: laundry room scent claims to hack your GPA in eight minutes",
+        "Promo leak: basement DJ streaming rizz playlist behind paywall",
+        "Sponsored scoop: Walter cheeseburger offers proprietary hunger firewall",
+        "Campus commerce: ape professor touts banana mic masterclass",
+        "Influencer drop: donkey professor selling office hour fast passes",
+        "Advertorial: possum streaming service promises unlimited vibe resets",
+        "Limited seats: bathroom wizard firewall workshop includes free sage bundle",
+        "Swipeworthy: koi pond optics guarantee algorithm love on first post",
+        "Paid placement: therapy dog cape rental skyrockets before midterms",
+        "Campus ad: croc footwear sponsor launching unstoppable hallway tour",
+        "Buzz alert: confession vending machine adds premium backlog upgrade",
+        "Promo push: study goblin service claims ninety percent group project compliance",
+        "Boosted clip: campus shuttle DJ selling exclusive remix tokens tonight"
     ];
 
     const CHAOS_LEVELS = [
-        { level: 38, label: "Library printer quietly plotting the next paper jam uprising" },
-        { level: 52, label: "Residence hall rumor mill vibrating at hazardous decibels" },
-        { level: 64, label: "Skibidi flash mob rehearsing in the basement again" },
-        { level: 71, label: "Gamma level brainrot detected near Court Street food trucks" },
-        { level: 83, label: "Finals-week caffeine rituals spilling into the quad" },
-        { level: 47, label: "Donkey NPC performing pop-up vibe checks outside Alden" },
-        { level: 92, label: "Dorm wifi negotiating influencer deals with John Pork" },
-        { level: 58, label: "Campus geese organizing another hallway takeover" },
-        { level: 76, label: "Emotional support vending machine went feral at 2 AM" },
-        { level: 67, label: "Sigma aura index exceeds recommended daily limit" },
-        { level: 81, label: "Library basement rave reported to smell like Baja Blast" },
-        { level: 69, label: "RA confiscated three Ouija boards from the study lounge" },
-        { level: 95, label: "Emergency alert: nugget preacher announcing surprise sermon" },
-        { level: 73, label: "Campus shuttle DJ stuck on Skibidi remix loop again" },
-        { level: 62, label: "Rival dorm declared meme war using only Canva slides" },
-        { level: 88, label: "Dean spotted speed-running the pizza line with zero remorse" },
-        { level: 79, label: "Caution: emotional support brick rolling loose across College Green" },
-        { level: 91, label: "Housing reports phantom RA doing midnight vibe inspections" },
-        { level: 54, label: "Hydration station overrun by iced coffee zealots chanting slogans" },
-        { level: 86, label: "Skibidi siren detected echoing through Alden vents" },
-        { level: 63, label: "Clubs competing to trademark the word 'sigma' cause paperwork storm" },
-        { level: 74, label: "Quad squirrels forming council to regulate picnic table usage" },
-        { level: 82, label: "Unexpected kazoo parade rerouted three lecture halls" },
-        { level: 57, label: "Campus cops chasing rumors of teleporting vending machines" },
-        { level: 68, label: "Art building glowing neon due to experimental meme installation" },
-        { level: 84, label: "Emergency taco truck pilgrimage causing gridlock on Court Street" },
-        { level: 66, label: "Mystery fog machine activating under the library grand stairwell" },
-        { level: 93, label: "Dorm hallway drumline refuses to yield between 1 and 4 AM" },
-        { level: 59, label: "Sustainability club swapping every trash can for glitter portals" },
-        { level: 87, label: "Uno reverse tournament escalating into full-blown senate hearing" },
-        { level: 72, label: "Campus squirrels launched influencer brand deal with the geese" }
+        { level: 38, label: "Click-through spike detected near Alden study pods" },
+        { level: 52, label: "Dorm 7 focus group demanding capybara wellness upsells" },
+        { level: 64, label: "Quad saturated with limited-offer QR codes; conversions pending" },
+        { level: 71, label: "Influencer squirrels launching pre-roll over College Green" },
+        { level: 83, label: "Funnel leakage: midnight ramen ad served 400 percent more impressions" },
+        { level: 47, label: "Alert: elevator screens autoplaying donut drops on every floor" },
+        { level: 92, label: "Crisis: bathroom wizard subscription booth sold out instantly" },
+        { level: 58, label: "Optimization team replacing lecture slides with swipe-up promos" },
+        { level: 76, label: "A/B test reportedly broke the campus wifi analytics dashboard" },
+        { level: 67, label: "Gigachad geese negotiating brand deal for hallway naming rights" },
+        { level: 81, label: "Study goblin franchise unveiling roommate referral loyalty tiers" },
+        { level: 69, label: "Urgent memo: RA requests ceasefire on midnight flash-sale sirens" },
+        { level: 95, label: "Dean inbox overwhelmed by autoplay nugget ad complaints" },
+        { level: 73, label: "Laundry room influencers promise viral results with scented banners" },
+        { level: 62, label: "Coffee lab retargeting campaign causing campus-wide caffeine FOMO" },
+        { level: 88, label: "Dorm hallway telethon raising banana coin staking fund" },
+        { level: 72, label: "Skibidi street team rolling out branded scooters with referral codes" },
+        { level: 84, label: "Emergency banner: emotional support brick launching IPO tonight" }
     ];
 
     const DORM_LORE_HOTLINE = [
-        "Room 314 swears the mini fridge whispers 'we ball' at 3AM sharp.",
-        "Laundry room 2A currently haunted by a glowing sock demanding tribute.",
-        "Hallway whiteboard now a live scoreboard for microwave noodle speed-runs.",
-        "East wing reports mysterious Baja Blast drip discovered in the ceiling vents.",
-        "Resident cat allegedly unlocked the fire alarm just to drop a new synthwave mix.",
-        "RA confiscated seven scooters from a midnight 'Mario Kart' tournament in the lobby.",
-        "Someone turned the vending machine into a confession booth—insert $1 to spill tea.",
-        "CompSci majors claim the elevator is sentient and ships random floor combinations.",
-        "Dorm Wi-Fi password now rotates hourly based on the meme of the day.",
-        "Legend says knocking three times on the broom closet opens a secret Baja lounge.",
-        "Basement lounge projector stuck looping Ohio cryptid documentaries until finals.",
-        "Roommate treaty requires daily affirmation circle plus communal bagel tribute.",
-        "Fourth floor hallway instituted a no-shoes-but-crocs rule to appease the vibe gods.",
-        "Mystery student keeps leaving hand-labeled 'emotional support ravioli' in the fridge.",
-        "Fire exit stairwell transformed into unofficial late-night karaoke booth.",
-        "Someone reprogrammed the thermostat to display horoscope advice instead of temperatures.",
-        "Hall slack channel blown up by rumors of a rogue Roomba recruiting for pillow fort duty.",
-        "Legendary inflatable couch resurfaced and now floats between common rooms like a specter.",
-        "Dorm group chat currently voting whether the toaster deserves hall council representation.",
-        "All quiet hours suspended after ghost printer started dispensing cryptic study guides.",
-        "Rumor says knocking pattern 2-1-3 on room 909 summons an NPC who trades snacks for lore.",
-        "Hydration station allegedly dispensing Baja Blast every third refill—investigation pending.",
-        "Mailroom overflowed because everyone ordered the same limited-edition sigma plushie.",
-        "Hallway light flickers Morse code that perfectly predicts pop quiz schedules.",
-        "Dorm lobby fish tank allegedly hosts weekly therapy sessions for overcaffeinated majors.",
-        "Someone installed a disco ball in the study lounge and now it's a silent rave zone nightly.",
-        "Legend says sitting on the beanbag throne grants immunity from 8AM labs for 24 hours.",
-        "Basement freezer full of go-gurts labeled 'for emergency rizz deployment only'.",
-        "Elevator mirror allegedly shows your final grade curve if you practice your presentation.",
-        "Hallway air freshener mysteriously cycles through scents named after campus lore arcs.",
-        "Every Tuesday, the dorm PA plays whale sounds because someone said it boosts GPA by 2%.",
-        "Resident cryptid left sticky notes with clues leading to a hidden stash of study snacks.",
-        "Someone keeps swapping door name tags with their NPC alter-egos and it's absolute chaos.",
-        "Lobby whiteboard now tracks 'microwave arc of shame' for anyone burning popcorn after midnight."
+        "Room 314 focus group demanded the capybara lounge include tiered pricing.",
+        "Laundry room 2A now locked behind subscription-based suds tokens.",
+        "Hallway whiteboard rebranded as the dorm conversion dashboard.",
+        "East wing charges a QR scan toll before you access the communal kitchen.",
+        "Resident cat signed a talent deal to promote overnight study playlists.",
+        "RA replaced quiet hours with 'sponsored slots' between midnight and 2 AM.",
+        "Vending machine confession booth upsells premium secrets for extra coins.",
+        "Elevator now loops frog-tire shuttle ads on every stop until finals end.",
+        "Dorm Wi-Fi portal requests an email before loading homework pages.",
+        "Knock three times for access to the banana mic masterclass webinar.",
+        "Basement lounge runs nonstop demos of the possum productivity course.",
+        "Roommate treaty includes mandatory sponsored snack placement on desks.",
+        "Fourth floor hallway charging placement fees for new flyer campaigns.",
+        "Fridge stocked only with 'emotional support' samples from brand partners.",
+        "Fire exit signage replaced by affiliate codes for therapy dog merch.",
+        "Thermostat reports temperature in conversion rates after midnight.",
+        "Hall Slack debating pre-roll policy for the communal playlist queue.",
+        "Inflatable couch now branded; requires official hashtag to sit down.",
+        "Group chat awards XP for posting daily clickbait headlines.",
+        "Mailroom bundles packages with banana coin loyalty brochures.",
+        "Hydration station swapped to capybara coconut kiosk with tip jar QR.",
+        "Common room projector autoplaying product pitches between Mario Kart rounds.",
+        "Study lounge beanbags rented in fifteen-minute sponsored increments.",
+        "Basement freezer filled with 'limited edition' dorm meal prep kits.",
+        "Elevator mirror flashes upsell prompts before revealing your outfit.",
+        "Air freshener rotates through scents named after brand partnerships.",
+        "Tuesday PA read thirty seconds of frog-tire treadmill ad copy.",
+        "Dorm ghost allegedly haunts anyone who skips the affiliate link.",
+        "Lobby scoreboard tracks which resident drives the most sign-ups.",
+        "Pillow fort now paywalled behind exclusive sticker pack purchase.",
+        "Laundry tokens replaced with rizz reward points redeemable for ad-free time.",
+        "Study cubicle bookings require uploading a testimonial selfie.",
+        "Commons microwave door features rotating banner ads for ramen drops.",
+        "Resident cryptid hands out stamped punch cards for midnight webinars."
     ];
 
     const BRIEFING_LINES = [
-        "Dean confirms campus geese now accept Venmo bribes",
-        "Housing warns of spectral roommate requesting late fees",
-        "Counseling center launches meme coping worksheets this week",
-        "RA memo: no more summoning circles without facilities sign-off",
-        "Campus police investigating missing statue of Emotional Support Brick",
-        "Dining just dropped limited edition Baja Blast reduction sauce",
-        "Registrar admits syllabus week is a pyramid scheme but vibes",
-        "Library extended hours sponsored by the Rat Accountant Society",
-        "Student senate debates if naps count as experiential learning",
-        "Career center hosts workshop on monetizing your villain arc",
-        "Facilities testing holographic geese deterrents in the quad",
-        "Chemistry department denies responsibility for glowing vending machines",
-        "Campus tour guide union demands hazard pay for Skibidi sightings",
-        "Dining hall clarifies ice cream machine outage is performance art",
-        "Museum pop-up exhibits the lost and found of emotional support items",
-        "IT issues warning about AI study buddies gaining sentience",
-        "Bookstore launches loyalty program for last-minute blue book runs",
-        "Wellness center introduces meme-based mindfulness breathing",
-        "Campus radio apologizes for accidentally broadcasting nugget sermons"
+        "Growth team reports click-through surge on capybara wellness ads",
+        "Housing warns of QR code scalpers operating in the stairwell",
+        "Counseling center pilots mindfulness sponsored by frog-tire cardio",
+        "RA memo: no guerilla projection mapping without pre-roll disclaimers",
+        "Campus police investigating unauthorized vending machine loyalty program",
+        "Dining launches banana coin cashback for midnight combo purchases",
+        "Registrar exploring micro-credentials for meme marketing interns",
+        "Library after-hours funded by emotional support brick investors",
+        "Student senate debates hallway pop-up influencer booth limits",
+        "Career center hosts workshop on monetizing dorm gossip newsletters",
+        "Facilities testing AR billboards outside lecture halls",
+        "Chemistry department denies involvement in glow-in-the-dark ad ink",
+        "Campus tour script updated with paid shoutout for koi pond optics",
+        "Dining hall clarifies 'surge pricing' equals triple dessert sponsorship",
+        "Museum unveils exhibit of failed campus marketing campaigns",
+        "IT warns phishing emails disguised as finals-week promo codes",
+        "Bookstore adds impulse wall of branded study goblin plushies",
+        "Wellness center bundles nap pods with branded lo-fi playlist trials",
+        "Campus radio sold midnight block to nugget preacher infomercial"
     ];
 
     const ATMOSPHERIC_FORECASTS = [
-        { heading: "Sunrise", description: "Expect a mist of Monster fumes drifting over Court Street." },
-        { heading: "Midday", description: "Scattered syllabus confetti with a high chance of rizz alerts." },
-        { heading: "Afternoon", description: "Localized cringe storms around the group project lab." },
-        { heading: "Dusk", description: "Emotional support fog rolling in from the dorm laundry wing." },
-        { heading: "Night", description: "Likely brainrot auroras above Alden atrium after 11 PM." },
-        { heading: "Graveyard Shift", description: "48 percent chance of rogue skibidi sirens near West Green." },
-        { heading: "Between Classes", description: "Expect gusts of frantic walking speed with latte drizzle." },
-        { heading: "Club Hours", description: "Spotty bursts of glitter and chaotic flyers across the quad." },
-        { heading: "Dining Hall Rush", description: "High probability of emotional support carbs falling from the sky." },
-        { heading: "Study Break", description: "Warm front brings lo-fi beats and feral snack energy to Alden." },
-        { heading: "Weekend Dawn", description: "Morning haze infused with faint bass from last night's basement rave." },
-        { heading: "Office Hours", description: "Faculty attempting calm breezes while chaos index rises steadily." }
+        { heading: "Sunrise", description: "Expect a drizzle of sponsored push notifications over Court Street." },
+        { heading: "Midday", description: "Targeted pop-ups forming near Alden with upsell gusts." },
+        { heading: "Afternoon", description: "Localized clickbait thunderstorms along group project labs." },
+        { heading: "Dusk", description: "Retargeting haze settling across dorm wifi zones." },
+        { heading: "Night", description: "High chance of autoplay ads echoing through laundry wings." },
+        { heading: "Graveyard Shift", description: "Infomercial fog rolling in from 2 AM ramen deliveries." },
+        { heading: "Between Classes", description: "Expect coupon flurries with mild hallway congestion." },
+        { heading: "Club Hours", description: "Street teams distributing glow-in-the-dark QR codes." },
+        { heading: "Dining Rush", description: "Limited-time combo sirens may trigger FOMO squalls." },
+        { heading: "Study Break", description: "Calm breeze of branded lo-fi playlists across Alden stacks." },
+        { heading: "Weekend Dawn", description: "Sporadic billboard drones projecting onto residence halls." },
+        { heading: "Office Hours", description: "Faculty inbox showers of affiliate partnerships expected." }
     ];
 
     const LIVE_CHATTER_LINES = [
-        { handle: "@sleepdeprived_ferret", message: "somebody bring back the vending machine lore packets" },
-        { handle: "@npc_alert_409", message: "donkey just stared at me until I confessed my group project sins" },
-        { handle: "@goblinenergy", message: "selling limited edition iced coffee IV drips at the library" },
-        { handle: "@finalbossRA", message: "if your microwave summons smoke again please at least livestream" },
-        { handle: "@doomscrollingmajor", message: "I heard the nugget preacher is doing a midnight rerun" },
-        { handle: "@wifi_oracle", message: "campus wifi asked me to stop downloading lore PDFs" },
-        { handle: "@skibidi_spotted", message: "saw 094324 in the mirror again we are not back" },
-        { handle: "@permacringe", message: "lecture hall B turned into an ARG and nobody told me" },
-        { handle: "@quad_prophet", message: "forecast says meme hail with a side of villain arcs" },
-        { handle: "@latefee_lawyer", message: "rat accountant offering plea deals for dirty dishes" },
-        { handle: "@sigma_weather", message: "brainrot index hitting orange please hydrate" },
-        { handle: "@campuscryptid", message: "elevator 3 playing lo-fi nugget sermons on loop" },
-        { handle: "@laundrybard", message: "someone just performed slam poetry to the spin cycle" },
-        { handle: "@icedcoffeeOverlord", message: "barista gave me a loyalty sash for excessive espresso" },
-        { handle: "@geeseWatchHQ", message: "flock just annexed the fountain and set up toll booths" },
-        { handle: "@finalsGremlin", message: "trading highlighters for emotional support playlists" },
-        { handle: "@midnightTA", message: "office hours moved to the arcade because vibes" },
-        { handle: "@brickfan420", message: "emotional support brick now has its own newsletter" },
-        { handle: "@quadDJ", message: "accidentally remixed the professor's lecture with Skibidi" },
-        { handle: "@campusoracle", message: "tarot pulled three cups and one Baja Blast" },
-        { handle: "@lateNightScoops", message: "ice cream machine is working?? repeat, working" },
-        { handle: "@studybreakhero", message: "set up a pillow fort in Alden if anyone needs it" },
-        { handle: "@npc_on_duty", message: "saw gigachad cat holding a press conference again" },
-        { handle: "@chaosRegistrar", message: "we now offer extra credit for surviving the quad kazoo parade" },
-        { handle: "@monstermonk", message: "campus chapel doing midnight Monster tastings send help" },
-        { handle: "@laundrycryptid", message: "dryer 5 just spit out a glowing sock and called me king" },
-        { handle: "@studyRoomGoblin", message: "claimed study room beta we duel at dawn for the projector" },
-        { handle: "@vibeInspector", message: "issuing citations for unlicensed sigma energy in the cafe" }
+        { handle: "@sponsoredSleeper", message: "roommate whispering ad copy in his sleep again send help" },
+        { handle: "@qr_code_goblin", message: "hallway makes you scan three QR codes just to microwave noodles" },
+        { handle: "@clickbaitCapy", message: "capybara lounge offering premium hydration tier if you tap now" },
+        { handle: "@AdBlockRA", message: "unplug the projector before it auto-plays nugget commercials" },
+        { handle: "@funnelsForFun", message: "marketing majors cold-calling the laundry line for beta testers" },
+        { handle: "@lofiLeadGen", message: "new study playlist sneaks in twenty minutes of testimonials" },
+        { handle: "@DormCommerce", message: "someone bought the emotional support brick NFT for eighteen bucks" },
+        { handle: "@squirrelAffiliate", message: "geese signed exclusive toll-booth sponsorship for the quad" },
+        { handle: "@caffeineCRM", message: "coffee barista upsold me a finals battle pass I already bought" },
+        { handle: "@flashSaleTA", message: "office hours moved to the lobby for live webinar vibes" },
+        { handle: "@clickthru_ferret", message: "ferret handing out swipe-up cards at the library entrance" },
+        { handle: "@bannerGremlin", message: "dorm wifi injects popups asking about my vibe goals" },
+        { handle: "@sigh_up", message: "signed roommate up for three newsletters after he stole my charger" },
+        { handle: "@campusCPA", message: "banana coin staking spreadsheet allegedly beats work-study" },
+        { handle: "@boostedPossum", message: "possum influencer offering shoutouts for leftover meal swipes" },
+        { handle: "@ugcWalrus", message: "library fish tank running a user-generated ad contest" },
+        { handle: "@metricsMoth", message: "every light fixture has a referral code taped underneath" },
+        { handle: "@viralRA", message: "if your ad reads start with 'hey bestie' expect a citation" },
+        { handle: "@splashPageDJ", message: "basement rave projecting landing pages between tracks" },
+        { handle: "@midnightCRO", message: "replaced my sleep schedule with conversion rate optimization" },
+        { handle: "@retargeted", message: "mentioned ramen once and now the fridge is full of coupons" },
+        { handle: "@donutUpsell", message: "campus donuts include optional motivational voicemail upsell" },
+        { handle: "@bannerWizard", message: "bathroom mirror flashes countdown timers while I brush" },
+        { handle: "@loyaltyLynx", message: "dining hall handing out punch cards for hype lattes" },
+        { handle: "@doomscrollAds", message: "feed served me the same frog-tire promo seven times tonight" },
+        { handle: "@sponsored_owl", message: "night class professor opened with a brand partnership disclaimer" },
+        { handle: "@couponChancellor", message: "admin email subject line just said 'LAST CHANCE BUNDLE'" },
+        { handle: "@paywallPirate", message: "study guide hidden behind banana coin paywall again" },
+        { handle: "@ctaOverload", message: "side panel told me to tap here, there, and also over there" }
     ];
 
     const MAX_CHAT_LINES = 2;
@@ -3019,7 +3091,7 @@
         if (Array.isArray(item.variants)) {
             item.variants.forEach((variant) => {
                 if (variant && variant.ticker) {
-                    lines.push(variant.ticker);
+                    lines.push("Sponsored: " + variant.ticker);
                 }
             });
         }
@@ -3104,6 +3176,38 @@
 
     const newsOutletRotator = new NewsOutletRotator(NEWS_OUTLETS);
     const imageRotator = new ImageRotator(MEDIA_LIBRARY);
+    class AdRotator {
+        constructor(items) {
+            this.items = items.slice();
+            this.queue = [];
+            this.previousId = null;
+        }
+
+        hasItems() {
+            return this.items.length > 0;
+        }
+
+        next() {
+            if (!this.hasItems()) {
+                return null;
+            }
+
+            if (this.queue.length === 0) {
+                this.queue = shuffleArray(this.items);
+            }
+
+            if (this.queue.length > 1 && this.queue[0].id === this.previousId) {
+                const first = this.queue.shift();
+                this.queue.push(first);
+            }
+
+            const ad = this.queue.shift();
+            this.previousId = ad.id;
+            return ad;
+        }
+    }
+
+    const adRotator = new AdRotator(AD_LIBRARY);
 
     const ICONS = {
         likes: "&#128165;",
@@ -3121,6 +3225,9 @@
             this.frameRequest = null;
             this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
             this.lastTimestamp = null;
+            this.postsSinceAd = 0;
+            this.adFrequency = 6;
+            this.activeSurvey = null;
         }
 
         init() {
@@ -3236,6 +3343,17 @@
         }
 
         createPost(selectionOverride) {
+            if (adRotator.hasItems()) {
+                this.postsSinceAd += 1;
+                if (this.postsSinceAd >= this.adFrequency) {
+                    this.postsSinceAd = 0;
+                    const adCampaign = adRotator.next();
+                    if (adCampaign) {
+                        return this.buildAdPost(adCampaign);
+                    }
+                }
+            }
+
             const article = document.createElement("article");
             article.className = "post";
             article.dataset.needsHeightRefresh = "true";
@@ -3269,9 +3387,7 @@
                 mediaContext = selection.variant || null;
             }
 
-            const body = document.createElement("p");
-            body.className = "post-body";
-            body.innerHTML = buildPostBody(mediaContext);
+            const body = buildPostBody(mediaContext);
             article.appendChild(body);
 
             const footer = buildFooter();
@@ -3280,13 +3396,13 @@
             return article;
         }
 
-        buildHeader() {
+        buildHeader(override) {
             const header = document.createElement("header");
             header.className = "post-header";
 
             const avatar = document.createElement("div");
             avatar.className = "avatar";
-            const outlet = buildHandle();
+            const outlet = override && override.outlet ? override.outlet : buildHandle();
             const handle = outlet.handle;
 
             if (outlet.avatar) {
@@ -3322,6 +3438,184 @@
             header.appendChild(identity);
 
             return header;
+        }
+
+        buildAdPost(adCampaign) {
+            const article = document.createElement("article");
+            article.className = "post ad-post";
+            article.dataset.needsHeightRefresh = "true";
+
+            const overrideOutlet = {
+                handle: adCampaign.handle || "@CampusSponsored",
+                label: adCampaign.label || "Sponsored",
+                avatar: adCampaign.avatar || null
+            };
+
+            const header = this.buildHeader({ outlet: overrideOutlet });
+            article.appendChild(header);
+
+            const badge = document.createElement("span");
+            badge.className = "badge";
+            badge.textContent = adCampaign.badge || "Sponsored";
+            article.appendChild(badge);
+
+            const body = buildAdBody(adCampaign);
+            article.appendChild(body);
+
+            const footer = buildAdFooter(adCampaign);
+            article.appendChild(footer);
+
+            this.bindAdInteractions(article, adCampaign, footer);
+
+            return article;
+        }
+
+        bindAdInteractions(article, adCampaign, footer) {
+            if (!footer || !article) {
+                return;
+            }
+
+            const hideButton = footer.querySelector(".ad-hide");
+            if (!hideButton) {
+                return;
+            }
+
+            hideButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                this.launchAdSurvey(article, adCampaign);
+            });
+        }
+
+        teardownSurvey() {
+            if (!this.activeSurvey || typeof this.activeSurvey.finish !== "function") {
+                return;
+            }
+            this.activeSurvey.finish(true);
+        }
+
+        launchAdSurvey(article, adCampaign) {
+            if (!article) {
+                return;
+            }
+
+            if (article.dataset.surveyRunning === "true") {
+                return;
+            }
+
+            this.teardownSurvey();
+
+            const overlay = document.createElement("div");
+            overlay.className = "ad-survey-overlay";
+
+            const dialog = document.createElement("div");
+            dialog.className = "ad-survey";
+            overlay.appendChild(dialog);
+
+            const title = document.createElement("p");
+            title.className = "ad-survey-title";
+            const headline = adCampaign && adCampaign.headline ? adCampaign.headline : "this ad";
+            title.textContent = "Before we hide " + headline + "...";
+            dialog.appendChild(title);
+
+            const tagline = document.createElement("p");
+            tagline.className = "ad-survey-tagline";
+            tagline.textContent = "Marketing would love a micro-feedback vibe check:";
+            dialog.appendChild(tagline);
+
+            const questionElement = document.createElement("p");
+            questionElement.className = "ad-survey-question";
+            dialog.appendChild(questionElement);
+
+            const progress = document.createElement("span");
+            progress.className = "ad-survey-progress";
+            dialog.appendChild(progress);
+
+            const hint = document.createElement("span");
+            hint.className = "ad-survey-hint";
+            hint.textContent = "Tap anywhere when you are done (spoiler: it will still return).";
+            dialog.appendChild(hint);
+
+            const targetBody = document.body;
+            if (targetBody) {
+                targetBody.appendChild(overlay);
+                targetBody.classList.add("ad-survey-active");
+            }
+
+            article.dataset.surveyRunning = "true";
+            article.classList.add("ad-muted");
+            this.markHeightDirty(article);
+
+            const questions = shuffleArray(SURVEY_QUESTIONS).slice(0, 3);
+            if (questions.length === 0) {
+                questions.push("Would you miss this sponsored content if it vanished forever?");
+            }
+
+            let finished = false;
+            const timeouts = [];
+
+            const finish = (immediate) => {
+                if (finished) {
+                    return;
+                }
+                finished = true;
+
+                while (timeouts.length) {
+                    window.clearTimeout(timeouts.pop());
+                }
+
+                if (targetBody) {
+                    targetBody.classList.remove("ad-survey-active");
+                }
+
+                const removeOverlay = () => {
+                    overlay.remove();
+                };
+
+                if (immediate) {
+                    removeOverlay();
+                } else {
+                    overlay.classList.add("closing");
+                    timeouts.push(window.setTimeout(removeOverlay, 260));
+                }
+
+                article.classList.remove("ad-muted");
+                article.dataset.surveyRunning = "false";
+                article.classList.add("ad-respawn");
+                this.markHeightDirty(article);
+
+                timeouts.push(window.setTimeout(() => {
+                    article.classList.remove("ad-respawn");
+                    this.markHeightDirty(article);
+                }, 900));
+
+                this.activeSurvey = null;
+            };
+
+            const showQuestion = (index) => {
+                if (index >= questions.length) {
+                    finish(false);
+                    return;
+                }
+
+                questionElement.textContent = questions[index];
+                progress.textContent = "Question " + (index + 1) + " of " + questions.length;
+
+                const nextIndex = index + 1;
+                const timeout = window.setTimeout(() => {
+                    showQuestion(nextIndex);
+                }, 1500);
+                timeouts.push(timeout);
+            };
+
+            overlay.addEventListener("click", (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                finish(false);
+            });
+
+            this.activeSurvey = { finish };
+            showQuestion(0);
         }
     }
 
@@ -3521,24 +3815,21 @@
     }
 
     function buildPostBody(context) {
-        const buildFallback = () => {
-            const highlight = pickRandom(TEXT_SNIPPETS.highlights);
-            const opener = pickRandom(TEXT_SNIPPETS.openers);
-            const scenario = pickRandom(TEXT_SNIPPETS.scenarios);
-            const closer = pickRandom(TEXT_SNIPPETS.closers);
-            return highlight + " " + opener + " " + scenario + " " + closer + " \u2014 stay tuned.";
-        };
+        const highlight = context && context.tag ? "<strong>" + context.tag + "</strong>" : pickRandom(TEXT_SNIPPETS.highlights);
+        const paragraph = document.createElement("p");
+        paragraph.className = "post-body";
 
-        if (context) {
-            const highlight = context.tag ? "<strong>" + context.tag + "</strong>" : pickRandom(TEXT_SNIPPETS.highlights);
-            if (Array.isArray(context.bodyLines) && context.bodyLines.length > 0) {
-                const line = pickRandom(context.bodyLines);
-                return highlight + " " + line;
-            }
-            return buildFallback();
+        if (context && Array.isArray(context.bodyLines) && context.bodyLines.length > 0) {
+            const line = pickRandom(context.bodyLines);
+            paragraph.innerHTML = highlight + " " + line;
+            return paragraph;
         }
 
-        return buildFallback();
+        const opener = pickRandom(TEXT_SNIPPETS.openers);
+        const scenario = pickRandom(TEXT_SNIPPETS.scenarios);
+        const closer = pickRandom(TEXT_SNIPPETS.closers);
+        paragraph.innerHTML = highlight + " " + opener + " " + scenario + " " + closer + " \u2014 stay tuned.";
+        return paragraph;
     }
 
     function buildImageMedia(item, variant) {
@@ -3555,6 +3846,82 @@
         figure.appendChild(caption);
 
         return figure;
+    }
+
+    function buildAdBody(adCampaign) {
+        const body = document.createElement("div");
+        body.className = "post-body ad-body";
+
+        const tag = document.createElement("span");
+        tag.className = "ad-tag";
+        tag.textContent = adCampaign.badge || "Sponsored";
+        body.appendChild(tag);
+
+        const headline = document.createElement("h3");
+        headline.className = "ad-headline";
+        headline.textContent = adCampaign.headline || "Campus Sponsored Spotlight";
+        body.appendChild(headline);
+
+        if (adCampaign.subhead) {
+            const sub = document.createElement("p");
+            sub.className = "ad-subhead";
+            sub.textContent = adCampaign.subhead;
+            body.appendChild(sub);
+        }
+
+        if (Array.isArray(adCampaign.bullets) && adCampaign.bullets.length > 0) {
+            const list = document.createElement("ul");
+            list.className = "ad-bullets";
+            adCampaign.bullets.slice(0, 3).forEach((line) => {
+                const li = document.createElement("li");
+                li.textContent = line;
+                list.appendChild(li);
+            });
+            body.appendChild(list);
+        }
+
+        if (adCampaign.disclaimer) {
+            const disclaimer = document.createElement("p");
+            disclaimer.className = "ad-disclaimer";
+            disclaimer.textContent = adCampaign.disclaimer;
+            body.appendChild(disclaimer);
+        }
+
+        return body;
+    }
+
+    function buildAdFooter(adCampaign) {
+        const footer = document.createElement("footer");
+        footer.className = "post-footer ad-footer";
+
+        const cta = document.createElement("a");
+        cta.className = "ad-cta";
+        cta.href = adCampaign && adCampaign.url ? adCampaign.url : "#";
+        cta.target = "_blank";
+        cta.rel = "noopener";
+        cta.textContent = adCampaign && adCampaign.cta ? adCampaign.cta : "Learn More";
+
+        const actions = document.createElement("div");
+        actions.className = "ad-footer-actions";
+        actions.appendChild(cta);
+
+        const hideButton = document.createElement("button");
+        hideButton.type = "button";
+        hideButton.className = "ad-hide";
+        hideButton.setAttribute("aria-label", "Hide this ad");
+        hideButton.textContent = "Hide Ad";
+        actions.appendChild(hideButton);
+
+        footer.appendChild(actions);
+
+        if (adCampaign && adCampaign.urgency) {
+            const urgency = document.createElement("span");
+            urgency.className = "ad-urgency";
+            urgency.textContent = adCampaign.urgency;
+            footer.appendChild(urgency);
+        }
+
+        return footer;
     }
 
     function buildFooter() {
