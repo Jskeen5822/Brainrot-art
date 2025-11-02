@@ -50,24 +50,12 @@ body {
     z-index: 1;
 }
 
-body.gallery-mode #app {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 24px;
-    max-width: 1200px;
-    padding: 24px;
-}
-
 .side-panel {
     flex: 0 0 clamp(220px, 22vw, 280px);
     display: flex;
     flex-direction: column;
     gap: 24px;
     color: var(--text);
-}
-
-body.gallery-mode .side-panel {
-    display: none;
 }
 
 .side-card {
@@ -248,12 +236,6 @@ body.gallery-mode .side-panel {
     overflow: hidden;
 }
 
-body.gallery-mode .frame {
-    width: 100%;
-    height: auto;
-    border-radius: 24px;
-}
-
 .status-bar {
     position: absolute;
     z-index: 3;
@@ -267,16 +249,6 @@ body.gallery-mode .frame {
     background: linear-gradient(120deg, rgba(168, 85, 247, 0.35), rgba(59, 130, 246, 0.15));
     border-bottom: 1px solid rgba(168, 85, 247, 0.25);
     overflow: hidden;
-}
-
-body.gallery-mode .status-bar {
-    position: static;
-    padding: 16px 24px;
-}
-
-body.gallery-mode .status-bar .ticker,
-body.gallery-mode .status-bar .clock {
-    display: none;
 }
 
 
@@ -304,12 +276,6 @@ body.gallery-mode .status-bar .clock {
     inset: 96px 0 0 0;
     padding: 44px 32px 60px;
     overflow: hidden;
-}
-
-body.gallery-mode .feed-shell {
-    position: static;
-    inset: auto;
-    padding: 24px;
 }
 
 .feed-shell::before,
@@ -341,14 +307,6 @@ body.gallery-mode .feed-shell {
     padding-bottom: 160px;
 }
 
-body.gallery-mode .feed {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    transform: none;
-    padding-bottom: 0;
-}
-
 .post {
     position: relative;
     background-color: var(--card);
@@ -361,10 +319,6 @@ body.gallery-mode .feed {
     display: flex;
     flex-direction: column;
     gap: 18px;
-}
-
-body.gallery-mode .post {
-    min-height: 100%;
 }
 
 .post-header {

@@ -36,11 +36,6 @@
     const SCROLL_SPEED = (LOW_POWER_MODE ? LOW_POWER_SCROLL_SPEED : BASE_SCROLL_SPEED) * 60;
     const INITIAL_POST_COUNT = LOW_POWER_MODE ? LOW_POWER_INITIAL_POST_COUNT : BASE_INITIAL_POST_COUNT;
     const TICKER_INTERVAL_MS = LOW_POWER_MODE ? Math.round(BASE_TICKER_INTERVAL_MS * INTERVAL_SCALE) : BASE_TICKER_INTERVAL_MS;
-    const GALLERY_MODE = typeof window !== "undefined" && new URLSearchParams(window.location.search).has("gallery");
-
-    if (GALLERY_MODE && typeof document !== "undefined") {
-        document.documentElement.dataset.galleryMode = "true";
-    }
 
     const TEXT_SNIPPETS = {
         openers: [
@@ -3330,31 +3325,6 @@
         }
     }
 
-    class GalleryRenderer {
-        constructor(feedElement) {
-            this.feed = feedElement;
-        }
-
-        render() {
-            if (!this.feed) {
-                return;
-            }
-
-            this.feed.innerHTML = "";
-
-            const tempDoomscroll = new Doomscroll(this.feed);
-
-            MEDIA_LIBRARY.forEach((item) => {
-                const selection = {
-                    item,
-                    variant: Array.isArray(item.variants) && item.variants.length > 0 ? item.variants[0] : null
-                };
-                const card = tempDoomscroll.createPost(selection);
-                this.feed.appendChild(card);
-            });
-        }
-    }
-
     class PulseTicker {
         constructor(element) {
             this.element = element;
@@ -3697,45 +3667,29 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        if (GALLERY_MODE) {
-            document.body.classList.add("gallery-mode");
-        }
-
         if (LOW_POWER_MODE) {
             document.body.classList.add("low-power");
         }
 
         const feedElement = document.getElementById("feed");
-
-        if (GALLERY_MODE) {
-            const gallery = new GalleryRenderer(feedElement);
-            gallery.render();
-        } else {
-            const doomscroll = new Doomscroll(feedElement);
-            doomscroll.init();
-        }
+        const doomscroll = new Doomscroll(feedElement);
+        doomscroll.init();
 
         const tickerElement = document.getElementById("ticker");
-        if (!GALLERY_MODE) {
-            const ticker = new PulseTicker(tickerElement);
-            ticker.start();
-        }
+        const ticker = new PulseTicker(tickerElement);
+        ticker.start();
 
         const clockElement = document.getElementById("clock");
-        if (!GALLERY_MODE) {
-            startClock(clockElement);
-        }
+        startClock(clockElement);
 
-        if (!GALLERY_MODE) {
-            const sidePanels = new SidePanels({
-                chaosBar: document.getElementById("chaos-meter"),
-                chaosLabel: document.getElementById("chaos-label"),
-                loreList: document.getElementById("lore-list"),
-                briefingList: document.getElementById("briefing-list"),
-                forecastList: document.getElementById("forecast-list"),
-                chatStream: document.getElementById("chat-stream")
-            });
-            sidePanels.init();
-        }
+        const sidePanels = new SidePanels({
+            chaosBar: document.getElementById("chaos-meter"),
+            chaosLabel: document.getElementById("chaos-label"),
+            loreList: document.getElementById("lore-list"),
+            briefingList: document.getElementById("briefing-list"),
+            forecastList: document.getElementById("forecast-list"),
+            chatStream: document.getElementById("chat-stream")
+        });
+        sidePanels.init();
     });
 })();
