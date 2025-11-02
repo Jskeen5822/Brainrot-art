@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap");
 
 :root {
     --bg: #04040d;
@@ -11,6 +11,11 @@
     --gap: 32px;
     --font-heading: "Space Grotesk", "Arial Black", sans-serif;
     --font-body: "Inter", "Segoe UI", sans-serif;
+    --font-data: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+    --canvas-gradient: radial-gradient(circle at 20% 20%, #0f172a 0%, #111827 45%, #02010a 100%);
+    --low-power-gradient: linear-gradient(135deg, #04070f 0%, #0e1a2c 100%);
+    --surface-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cg fill='%23ffffff' fill-opacity='.04'%3E%3Cpath d='M1 0h1v1H1zM5 1h1v1H5zM3 3h1v1H3zM7 4h1v1H7zM0 5h1v1H0zM4 6h1v1H4zM2 7h1v1H2z'/%3E%3C/g%3E%3C/svg%3E");
+    --texture-size: 160px;
 }
 
 * {
@@ -21,11 +26,15 @@
 
 body {
     font-family: var(--font-body);
-    background: radial-gradient(circle at 20% 20%, #0f172a 0%, #111827 45%, #02010a 100%);
     color: var(--text);
     min-height: 100vh;
     overflow: hidden;
     position: relative;
+    background-color: #02010a;
+    background-image: var(--canvas-gradient), var(--surface-texture);
+    background-size: cover, var(--texture-size);
+    background-repeat: no-repeat, repeat;
+    background-position: center, top left;
 }
 
 #app {
@@ -41,6 +50,14 @@ body {
     z-index: 1;
 }
 
+body.gallery-mode #app {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    max-width: 1200px;
+    padding: 24px;
+}
+
 .side-panel {
     flex: 0 0 clamp(220px, 22vw, 280px);
     display: flex;
@@ -49,8 +66,15 @@ body {
     color: var(--text);
 }
 
+body.gallery-mode .side-panel {
+    display: none;
+}
+
 .side-card {
-    background: rgba(18, 18, 36, 0.82);
+    background-color: rgba(18, 18, 36, 0.82);
+    background-image: var(--surface-texture);
+    background-size: 120px;
+    background-repeat: repeat;
     border: 1px solid rgba(148, 62, 255, 0.22);
     border-radius: 26px;
     padding: 22px 24px;
@@ -205,6 +229,7 @@ body {
 }
 
 .chat-line .timestamp {
+    font-family: var(--font-data);
     font-size: 0.72rem;
     color: rgba(148, 163, 184, 0.7);
     letter-spacing: 0.04em;
@@ -214,10 +239,19 @@ body {
     position: relative;
     width: min(92vw, 640px);
     height: min(96vh, 1080px);
-    background: var(--panel);
+    background-color: var(--panel);
+    background-image: var(--surface-texture);
+    background-repeat: repeat;
+    background-size: 140px;
     border: 2px solid var(--panel-border);
     border-radius: 32px;
     overflow: hidden;
+}
+
+body.gallery-mode .frame {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
 }
 
 .status-bar {
@@ -235,8 +269,19 @@ body {
     overflow: hidden;
 }
 
+body.gallery-mode .status-bar {
+    position: static;
+    padding: 16px 24px;
+}
+
+body.gallery-mode .status-bar .ticker,
+body.gallery-mode .status-bar .clock {
+    display: none;
+}
+
 
 .status-bar .ticker {
+    font-family: var(--font-data);
     flex: 1 1 auto;
     font-size: 0.78rem;
     color: var(--text);
@@ -247,6 +292,7 @@ body {
 }
 
 .status-bar .clock {
+    font-family: var(--font-data);
     font-variant-numeric: tabular-nums;
     font-size: 0.82rem;
     color: var(--text);
@@ -258,6 +304,12 @@ body {
     inset: 96px 0 0 0;
     padding: 44px 32px 60px;
     overflow: hidden;
+}
+
+body.gallery-mode .feed-shell {
+    position: static;
+    inset: auto;
+    padding: 24px;
 }
 
 .feed-shell::before,
@@ -289,15 +341,30 @@ body {
     padding-bottom: 160px;
 }
 
+body.gallery-mode .feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    transform: none;
+    padding-bottom: 0;
+}
+
 .post {
     position: relative;
-    background: var(--card);
+    background-color: var(--card);
+    background-image: var(--surface-texture);
+    background-size: 140px;
+    background-repeat: repeat;
     border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: 28px;
     padding: 26px;
     display: flex;
     flex-direction: column;
     gap: 18px;
+}
+
+body.gallery-mode .post {
+    min-height: 100%;
 }
 
 .post-header {
@@ -417,6 +484,7 @@ body {
 }
 
 .metric {
+    font-family: var(--font-data);
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -451,20 +519,22 @@ body {
 }
 
 body.low-power {
-    background: linear-gradient(135deg, #04070f 0%, #0e1a2c 100%);
+    background-image: var(--low-power-gradient), var(--surface-texture);
+    background-size: cover, var(--texture-size);
+    background-repeat: no-repeat, repeat;
 }
 
 body.low-power .frame {
-    background: rgba(14, 24, 42, 0.92);
+    background-color: rgba(14, 24, 42, 0.92);
     border-color: rgba(109, 227, 255, 0.08);
 }
 
 body.low-power .side-card {
-    background: rgba(12, 18, 32, 0.9);
+    background-color: rgba(12, 18, 32, 0.9);
 }
 
 body.low-power .post {
-    background: rgba(12, 20, 34, 0.94);
+    background-color: rgba(12, 20, 34, 0.94);
 }
 
 @media (max-width: 1480px) {

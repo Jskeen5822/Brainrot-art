@@ -36,6 +36,11 @@
     const SCROLL_SPEED = (LOW_POWER_MODE ? LOW_POWER_SCROLL_SPEED : BASE_SCROLL_SPEED) * 60;
     const INITIAL_POST_COUNT = LOW_POWER_MODE ? LOW_POWER_INITIAL_POST_COUNT : BASE_INITIAL_POST_COUNT;
     const TICKER_INTERVAL_MS = LOW_POWER_MODE ? Math.round(BASE_TICKER_INTERVAL_MS * INTERVAL_SCALE) : BASE_TICKER_INTERVAL_MS;
+    const GALLERY_MODE = typeof window !== "undefined" && new URLSearchParams(window.location.search).has("gallery");
+
+    if (GALLERY_MODE && typeof document !== "undefined") {
+        document.documentElement.dataset.galleryMode = "true";
+    }
 
     const TEXT_SNIPPETS = {
         openers: [
@@ -2576,6 +2581,210 @@
             ]
         },
         {
+            id: "capy-coconut",
+            variantIndex: 0,
+            src: "assets/media/Capybara with coconut body.png",
+            alt: "Capybara with a coconut torso lounging like a spa host",
+            variants: [
+                {
+                    caption: "Capybara opens coconut hydration lounge",
+                    tag: "Coconut Concierge",
+                    bodyLines: [
+                        "Wellness majors booked back-to-back slots just to absorb the ambient slosh soundtrack.",
+                        "Facilities added towel service after the capy insisted on 'premium drip' only.",
+                        "Legend says sipping from the coconut grants +12% resilience against surprise quizzes."
+                    ],
+                    ticker: "Coconut concierge capybara sells out hydration lounge appointments"
+                },
+                {
+                    caption: "Capybara hosts tropical study hall",
+                    tag: "Palm Pilot",
+                    bodyLines: [
+                        "Attendance requires flip-flops and a vow of group chat silence during sunset mode.",
+                        "TA hands out mini umbrellas as participation points for staying focused.",
+                        "Rumor says highlighting notes with neon markers unlocks complimentary coconuts."
+                    ],
+                    ticker: "Palm pilot study hall trend sweeps library basement"
+                },
+                {
+                    caption: "Capybara DJ drops lo-fi coconut chill",
+                    tag: "Shell Beats",
+                    bodyLines: [
+                        "Setlist features distant wave loops blended with gentle capybaritone hums.",
+                        "Campus radio simulcast the premiere and now the vibe meter refuses to reset.",
+                        "Legend says requesting a track politely earns you instant finals-week serenity."
+                    ],
+                    ticker: "Shell beats lo-fi stream crashes midnight study servers"
+                },
+                {
+                    caption: "Capybara launches floating finals retreat",
+                    tag: "Floatcore",
+                    bodyLines: [
+                        "Participants finish readings while bobbing in kiddie pools with LED coconuts.",
+                        "Counseling center approved it as 'unprecedented but soothing'.",
+                        "Rumor says falling asleep mid-float results in waking up with a 4.0 manifest."
+                    ],
+                    ticker: "Floatcore retreat earns emergency waitlist expansion"
+                },
+                {
+                    caption: "Capybara debuts coconut merch drop",
+                    tag: "Shell Merch",
+                    bodyLines: [
+                        "Limited batch beach totes sold out before the QR code fully loaded.",
+                        "Marketing minors furious the lookbook is just serene capy glamour shots.",
+                        "Legend says owning the tote grants priority access to any hammock on campus."
+                    ],
+                    ticker: "Shell merch drop causes midnight line outside student union"
+                },
+                {
+                    caption: "Capybara mediates dorm détente with tropical mocktails",
+                    tag: "Peace Peel",
+                    bodyLines: [
+                        "Roommate conflict rate plummeted once coconut mocktails replaced passive-aggressive sticky notes.",
+                        "Residence life now staffs the capy as official 'chill coach' twice a week.",
+                        "Rumor says clinking shells together locks in chore chart compliance for seven days."
+                    ],
+                    ticker: "Peace peel summit ends three roommate feuds before curfew"
+                }
+            ]
+        },
+        {
+            id: "frog-tire",
+            variantIndex: 0,
+            src: "assets/media/Frog-Tire humanoid.png",
+            alt: "Frog fused with a tire mid-bounce like a cursed mascot",
+            variants: [
+                {
+                    caption: "Frog-tire launches commuter shuttle",
+                    tag: "Ribbit Ride",
+                    bodyLines: [
+                        "Arrives exactly on the beat of its own beatboxing croaks every six minutes.",
+                        "Transit office debating whether tire squeals count as acceptable horn usage.",
+                        "Legend says hopping aboard grants immunity to late arrival side-eye."
+                    ],
+                    ticker: "Ribbit ride amphibian shuttle outpaces campus scooters"
+                },
+                {
+                    caption: "Frog-tire teaches kinetic cardio",
+                    tag: "Tread Bounce",
+                    bodyLines: [
+                        "PE credits now awarded for synchronized hops around the rec center.",
+                        "Biomechanics majors collecting data on amphibian traction like it is a thesis goldmine.",
+                        "Rumor says landing a perfect spin unlocks a limited edition tread mark sticker."
+                    ],
+                    ticker: "Tread bounce class becomes waitlisted in under four minutes"
+                },
+                {
+                    caption: "Frog-tire opens pop-up pit stop cafe",
+                    tag: "Pit Croak",
+                    bodyLines: [
+                        "Menu features nitro cold brew served with tiny lug nut cookies.",
+                        "Auto club jealous the latte art forms perfect tread patterns without stencils.",
+                        "Legend says tipping with spare change earns a free motivational ribbit."
+                    ],
+                    ticker: "Pit croak cafe disrupts quiet hours with joyful honks"
+                },
+                {
+                    caption: "Frog-tire MCs midnight parking lot rave",
+                    tag: "Neon Rim",
+                    bodyLines: [
+                        "DJ booth literally spins every time the bass drops, no safety cables needed.",
+                        "Campus police shrugged and provided glow vests just to keep up.",
+                        "Rumor says filming a TikTok on-site grants algorithm immunity for three posts."
+                    ],
+                    ticker: "Neon rim rave trends harder than homecoming after-party"
+                },
+                {
+                    caption: "Frog-tire leads pothole awareness parade",
+                    tag: "Asphalt Ally",
+                    bodyLines: [
+                        "Facilities applauded the demonstration once the frog patched two craters mid-speech.",
+                        "Engineering majors drafted the parade route with CAD precision just to flex.",
+                        "Legend says high-fiving the frog ensures your longboard bearings stay pristine."
+                    ],
+                    ticker: "Asphalt ally march convinces admin to repave west lot"
+                },
+                {
+                    caption: "Frog-tire offers finals-week spin therapy",
+                    tag: "Lap Leaper",
+                    bodyLines: [
+                        "Students vent while doing gentle figure-eights around the counseling center.",
+                        "Therapists report stress levels drop the moment the frog says 'let it roll'.",
+                        "Rumor says completing three laps unlocks free noise-canceling earplugs."
+                    ],
+                    ticker: "Lap leaper spin therapy becomes new finals coping ritual"
+                }
+            ]
+        },
+        {
+            id: "lebron-sunshine",
+            variantIndex: 0,
+            src: "assets/media/Lebron james your are my sunshine meme.png",
+            alt: "LeBron James holding a handmade 'you are my sunshine' poster with soft smile",
+            variants: [
+                {
+                    caption: "LeBron sunshine pop-up inspires study lounge",
+                    tag: "Solar Boost",
+                    bodyLines: [
+                        "Students lined up to receive individualized affirmations and a slap bracelet.",
+                        "Campus lighting crew dimmed fluorescents just to let the poster glow naturally.",
+                        "Legend says posing with the sign grants temporary immunity to Canvas outages."
+                    ],
+                    ticker: "Solar boost pep booth pulls record traffic before midterms"
+                },
+                {
+                    caption: "LeBron hosts gratitude open mic",
+                    tag: "Sunbeam Set",
+                    bodyLines: [
+                        "Performers required to end every story with 'and we still ball'.",
+                        "Residence life sponsored free lemonade because branding is everything.",
+                        "Rumor says confessing a wholesome secret wins you priority laundry slots."
+                    ],
+                    ticker: "Sunbeam set gratitude night trends campus-wide"
+                },
+                {
+                    caption: "LeBron leads sunrise hype walk",
+                    tag: "Morning MVP",
+                    bodyLines: [
+                        "Route includes mandatory high-five checkpoints staffed by hype mascots.",
+                        "Health center approved it as cardio plus motivational counseling in one.",
+                        "Legend says completing the loop grants automatic curve boost vibes."
+                    ],
+                    ticker: "Morning MVP walk sells out reflective vest inventory"
+                },
+                {
+                    caption: "LeBron sunshine poster becomes therapy dog cape",
+                    tag: "Glow Handler",
+                    bodyLines: [
+                        "Campus pups now parade through finals halls like radiant mascots.",
+                        "Petting zoo lines doubled once word spread the cape hums faint hype music.",
+                        "Rumor says scratching behind the ears earns a limited-edition motivational sticker."
+                    ],
+                    ticker: "Glow handler therapy tour melts even the econ majors"
+                },
+                {
+                    caption: "LeBron co-teaches resilience workshop",
+                    tag: "Sunshine Seminar",
+                    bodyLines: [
+                        "Slides include bullet points like 'hydrate, manifest, go 4-for-4 on quizzes'.",
+                        "Psych prof admitted the poster achieved higher attendance than any syllabus pitch.",
+                        "Legend says reciting the mantra grants clarity on every group project rubric."
+                    ],
+                    ticker: "Sunshine seminar maxes out auditorium capacity in minutes"
+                },
+                {
+                    caption: "LeBron curates dorm door affirmation swap",
+                    tag: "Hall Glow",
+                    bodyLines: [
+                        "Every door now features handwritten hype quotes sealed with glitter tape.",
+                        "RA reported noise complaints replaced by gratitude notes overnight.",
+                        "Rumor says whoever hangs the brightest poster wins first dibs on the good shower time."
+                    ],
+                    ticker: "Hall glow door swap sparks wholesome arms race"
+                }
+            ]
+        },
+        {
             id: "walter-cheeseburger",
             variantIndex: 0,
             src: "assets/media/Walter white as a cheese burger.png",
@@ -2857,7 +3066,7 @@
         constructor(items) {
             this.items = items.slice();
             this.queue = [];
-            this.previousId = null;
+            this.lastId = null;
         }
 
         hasItems() {
@@ -2871,15 +3080,20 @@
 
             if (this.queue.length === 0) {
                 this.queue = shuffleArray(this.items);
-                if (this.queue.length > 1 && this.queue[0].id === this.previousId) {
+                if (this.queue.length > 1 && this.lastId && this.queue[0].id === this.lastId) {
                     const first = this.queue.shift();
                     this.queue.push(first);
                 }
             }
 
+            if (this.queue.length === 0) {
+                return null;
+            }
+
             const item = this.queue.shift();
+            this.lastId = item.id;
+
             if (!item.variants || item.variants.length === 0) {
-                this.previousId = item.id;
                 return { item, variant: null };
             }
 
@@ -2889,7 +3103,6 @@
 
             const variant = item.variants[item.variantIndex % item.variants.length];
             item.variantIndex = (item.variantIndex + 1) % item.variants.length;
-            this.previousId = item.id;
             return { item, variant };
         }
     }
@@ -2924,7 +3137,9 @@
             const gapValue = parseInt(styles.getPropertyValue("gap"), 10);
             this.gap = Number.isNaN(gapValue) ? 32 : gapValue;
 
-            for (let index = 0; index < INITIAL_POST_COUNT; index += 1) {
+            const initialCount = Math.max(MEDIA_LIBRARY.length, INITIAL_POST_COUNT);
+
+            for (let index = 0; index < initialCount; index += 1) {
                 this.feed.appendChild(this.createPost());
             }
 
@@ -3025,7 +3240,7 @@
             element.dataset.needsHeightRefresh = "true";
         }
 
-        createPost() {
+        createPost(selectionOverride) {
             const article = document.createElement("article");
             article.className = "post";
             article.dataset.needsHeightRefresh = "true";
@@ -3042,19 +3257,21 @@
 
             let mediaContext = null;
 
-            if (imageRotator.hasItems()) {
-                const selection = imageRotator.next();
-                if (selection && selection.variant) {
-                    const mediaElement = buildImageMedia(selection.item, selection.variant);
-                    const mediaImages = mediaElement.querySelectorAll("img");
-                    mediaImages.forEach((img) => {
-                        img.addEventListener("load", () => {
-                            this.markHeightDirty(article);
-                        });
+            let selection = selectionOverride;
+            if (!selection && imageRotator.hasItems()) {
+                selection = imageRotator.next();
+            }
+
+            if (selection && selection.item) {
+                const mediaElement = buildImageMedia(selection.item, selection.variant);
+                const mediaImages = mediaElement.querySelectorAll("img");
+                mediaImages.forEach((img) => {
+                    img.addEventListener("load", () => {
+                        this.markHeightDirty(article);
                     });
-                    article.appendChild(mediaElement);
-                    mediaContext = selection.variant;
-                }
+                });
+                article.appendChild(mediaElement);
+                mediaContext = selection.variant || null;
             }
 
             const body = document.createElement("p");
@@ -3110,6 +3327,31 @@
             header.appendChild(identity);
 
             return header;
+        }
+    }
+
+    class GalleryRenderer {
+        constructor(feedElement) {
+            this.feed = feedElement;
+        }
+
+        render() {
+            if (!this.feed) {
+                return;
+            }
+
+            this.feed.innerHTML = "";
+
+            const tempDoomscroll = new Doomscroll(this.feed);
+
+            MEDIA_LIBRARY.forEach((item) => {
+                const selection = {
+                    item,
+                    variant: Array.isArray(item.variants) && item.variants.length > 0 ? item.variants[0] : null
+                };
+                const card = tempDoomscroll.createPost(selection);
+                this.feed.appendChild(card);
+            });
         }
     }
 
@@ -3455,29 +3697,45 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+        if (GALLERY_MODE) {
+            document.body.classList.add("gallery-mode");
+        }
+
         if (LOW_POWER_MODE) {
             document.body.classList.add("low-power");
         }
 
         const feedElement = document.getElementById("feed");
-        const doomscroll = new Doomscroll(feedElement);
-        doomscroll.init();
+
+        if (GALLERY_MODE) {
+            const gallery = new GalleryRenderer(feedElement);
+            gallery.render();
+        } else {
+            const doomscroll = new Doomscroll(feedElement);
+            doomscroll.init();
+        }
 
         const tickerElement = document.getElementById("ticker");
-        const ticker = new PulseTicker(tickerElement);
-        ticker.start();
+        if (!GALLERY_MODE) {
+            const ticker = new PulseTicker(tickerElement);
+            ticker.start();
+        }
 
         const clockElement = document.getElementById("clock");
-        startClock(clockElement);
+        if (!GALLERY_MODE) {
+            startClock(clockElement);
+        }
 
-        const sidePanels = new SidePanels({
-            chaosBar: document.getElementById("chaos-meter"),
-            chaosLabel: document.getElementById("chaos-label"),
-            loreList: document.getElementById("lore-list"),
-            briefingList: document.getElementById("briefing-list"),
-            forecastList: document.getElementById("forecast-list"),
-            chatStream: document.getElementById("chat-stream")
-        });
-        sidePanels.init();
+        if (!GALLERY_MODE) {
+            const sidePanels = new SidePanels({
+                chaosBar: document.getElementById("chaos-meter"),
+                chaosLabel: document.getElementById("chaos-label"),
+                loreList: document.getElementById("lore-list"),
+                briefingList: document.getElementById("briefing-list"),
+                forecastList: document.getElementById("forecast-list"),
+                chatStream: document.getElementById("chat-stream")
+            });
+            sidePanels.init();
+        }
     });
 })();
