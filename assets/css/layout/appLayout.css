@@ -1,0 +1,12 @@
+#app {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(24px, 4vw, 56px);
+    min-height: 100vh;
+    padding: clamp(24px, 4vh, 64px) 48px 24px;
+    max-width: 1760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}

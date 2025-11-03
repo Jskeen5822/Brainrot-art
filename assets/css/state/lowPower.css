@@ -1,0 +1,18 @@
+body.low-power {
+    background-image: var(--low-power-gradient), var(--surface-texture);
+    background-size: cover, var(--texture-size);
+    background-repeat: no-repeat, repeat;
+}
+
+body.low-power .frame {
+    background-color: rgba(14, 24, 42, 0.92);
+    border-color: rgba(109, 227, 255, 0.08);
+}
+
+body.low-power .side-card {
+    background-color: rgba(12, 18, 32, 0.9);
+}
+
+body.low-power .post {
+    background-color: rgba(12, 20, 34, 0.94);
+}

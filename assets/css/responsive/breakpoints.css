@@ -1,0 +1,16 @@
+@media (max-width: 1480px) {
+    #app {
+        padding: 24px;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .side-panel {
+        display: none;
+    }
+
+    #app {
+        padding: 24px;
+    }
+}
