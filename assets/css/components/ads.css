@@ -1,6 +1,7 @@
 .ad-post {
-    border-color: rgba(249, 115, 22, 0.45);
-    box-shadow: 0 20px 36px rgba(15, 23, 42, 0.4);
+    border-color: rgba(249, 115, 22, 0.5);
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.5), 0 0 40px rgba(249, 115, 22, var(--glow-opacity));
+    transition: box-shadow calc(var(--motion-scale) * 0.45s) ease;
     overflow: hidden;
 }
 
@@ -15,7 +16,7 @@
 }
 
 .ad-post.ad-respawn {
-    animation: adRespawn 0.9s ease;
+    animation: adRespawn calc(var(--motion-scale) * 0.9s) ease;
 }
 
 @keyframes adRespawn {
@@ -128,7 +129,7 @@ footer.ad-footer {
     font-size: 0.95rem;
     text-decoration: none;
     box-shadow: 0 8px 18px rgba(168, 85, 247, 0.28);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform calc(var(--motion-scale) * 0.25s) ease, box-shadow calc(var(--motion-scale) * 0.25s) ease;
 }
 
 .ad-footer .ad-cta:hover,
@@ -160,7 +161,7 @@ footer.ad-footer {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    transition: color calc(var(--motion-scale) * 0.22s) ease, border-color calc(var(--motion-scale) * 0.22s) ease, transform calc(var(--motion-scale) * 0.22s) ease;
 }
 
 .ad-hide::after {
@@ -170,7 +171,7 @@ footer.ad-footer {
     border-radius: 999px;
     border: 1px dashed rgba(168, 85, 247, 0.35);
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity calc(var(--motion-scale) * 0.22s) ease;
 }
 
 .ad-hide:hover,
@@ -195,11 +196,11 @@ footer.ad-footer {
     padding: 32px;
     background: rgba(4, 4, 13, 0.76);
     backdrop-filter: blur(4px);
-    animation: surveyFade 0.25s ease;
+    animation: surveyFade calc(var(--motion-scale) * 0.25s) ease;
 }
 
 .ad-survey-overlay.closing {
-    animation: surveyFadeOut 0.25s ease forwards;
+    animation: surveyFadeOut calc(var(--motion-scale) * 0.25s) ease forwards;
 }
 
 .ad-survey {
@@ -211,7 +212,7 @@ footer.ad-footer {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    box-shadow: 0 30px 60px rgba(8, 10, 24, 0.6);
+    box-shadow: 0 30px 60px rgba(8, 10, 24, 0.6), 0 0 36px rgba(168, 85, 247, var(--glow-opacity));
 }
 
 .ad-survey-title {

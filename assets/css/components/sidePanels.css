@@ -8,15 +8,38 @@
 
 .side-card {
     background-color: rgba(18, 18, 36, 0.82);
-    background-image: var(--surface-texture);
-    background-size: 120px;
-    background-repeat: repeat;
-    border: 1px solid rgba(148, 62, 255, 0.22);
+    background-image: var(--panel-overlay), var(--surface-texture);
+    background-size: cover, 120px;
+    background-repeat: no-repeat, repeat;
+    border: 1px solid var(--accent-soft);
     border-radius: 26px;
     padding: 22px 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    box-shadow: 0 16px 42px rgba(8, 10, 24, 0.48), 0 0 28px rgba(59, 130, 246, var(--glow-opacity));
+    transition: transform calc(var(--motion-scale) * 0.4s) ease, box-shadow calc(var(--motion-scale) * 0.4s) ease;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.side-card::before {
+    content: "";
+    position: absolute;
+    inset: -35% 45% 55% -25%;
+    background: radial-gradient(ellipse at center, rgba(59, 130, 246, var(--glow-opacity)) 0%, transparent 70%);
+    filter: blur(46px);
+    opacity: 0.7;
+    pointer-events: none;
+    transition: opacity calc(var(--motion-scale) * 0.4s) ease;
+    z-index: -1;
+}
+
+.side-card:hover,
+.side-card:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 22px 50px rgba(8, 10, 24, 0.55), 0 0 36px rgba(168, 85, 247, var(--glow-opacity));
 }
 
 .side-card h2,
@@ -48,7 +71,7 @@
     position: relative;
     height: 12px;
     border-radius: 999px;
-    background: rgba(59, 130, 246, 0.15);
+    background: rgba(59, 130, 246, 0.12);
     overflow: hidden;
 }
 
@@ -58,7 +81,8 @@
     width: 36%;
     overflow: hidden;
     border-radius: 999px;
-    background: linear-gradient(120deg, rgba(248, 113, 113, 0.95), rgba(59, 130, 246, 0.9));
+    background: linear-gradient(120deg, rgba(248, 113, 113, 0.95), rgba(168, 85, 247, 0.85));
+    box-shadow: 0 6px 14px rgba(168, 85, 247, 0.35);
 }
 
 .meter-label {
@@ -107,7 +131,8 @@
     padding: 10px 12px;
     border-radius: 18px;
     background: rgba(24, 24, 45, 0.72);
-    border: 1px solid rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: inset 0 0 18px rgba(8, 10, 24, 0.45);
 }
 
 .forecast-list .label {

@@ -8,4 +8,5 @@
 @import url("./components/posts.css");
 @import url("./components/ads.css");
 @import url("./state/lowPower.css");
+@import url("./utilities/safety.css");
 @import url("./responsive/breakpoints.css");
