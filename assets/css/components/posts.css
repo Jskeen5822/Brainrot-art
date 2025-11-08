@@ -1,0 +1,190 @@
+.post {
+    position: relative;
+    background-color: var(--card);
+    background-image: var(--panel-overlay), var(--surface-texture);
+    background-size: cover, 140px;
+    background-repeat: no-repeat, repeat;
+    border: 1px solid var(--accent-soft);
+    border-radius: 28px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 18px 52px rgba(8, 10, 24, 0.55), 0 0 38px rgba(168, 85, 247, var(--glow-opacity));
+    transition: transform calc(var(--motion-scale) * 0.45s) ease, box-shadow calc(var(--motion-scale) * 0.45s) ease;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.post::before {
+    content: "";
+    position: absolute;
+    inset: -20% -25% 45% 50%;
+    background: radial-gradient(ellipse at center, rgba(168, 85, 247, var(--glow-opacity)) 0%, transparent 70%);
+    filter: blur(42px);
+    opacity: 0.75;
+    pointer-events: none;
+    transition: opacity calc(var(--motion-scale) * 0.45s) ease;
+    z-index: -1;
+}
+
+.post:hover,
+.post:focus-within {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 26px 60px rgba(8, 10, 24, 0.62), 0 0 46px rgba(168, 85, 247, var(--glow-opacity));
+}
+
+.post-header {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.65), rgba(13, 148, 136, 0.6));
+    border: 1px solid rgba(168, 85, 247, 0.45);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #0f172a;
+    overflow: hidden;
+}
+
+.avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 18px;
+}
+
+.identity {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.identity .handle {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.identity .timestamp {
+    font-size: 0.78rem;
+    color: var(--subtle);
+}
+
+.post-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+.post-media {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 9 / 16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0b1120;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    letter-spacing: 0.06em;
+    font-size: clamp(1.3rem, 3.4vw, 1.8rem);
+    text-align: center;
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.28), rgba(15, 23, 42, 0.3));
+    box-shadow: inset 0 0 18px rgba(15, 23, 42, 0.45);
+}
+
+.post-media span {
+    position: relative;
+    z-index: 2;
+    padding: 12px 20px;
+    border-radius: 16px;
+    background: rgba(4, 4, 13, 0.25);
+    color: #f8fafc;
+    box-shadow: 0 12px 28px rgba(8, 10, 24, 0.5), 0 0 30px rgba(168, 85, 247, var(--glow-opacity));
+}
+
+.post-media.image {
+    background: transparent;
+    border: none;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    gap: 14px;
+    aspect-ratio: auto;
+}
+
+.post-media.image img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+}
+
+.post-media.image figcaption {
+    width: 100%;
+    font-size: 0.94rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    color: var(--subtle);
+    text-align: center;
+}
+
+.post-footer {
+    display: flex;
+    gap: 18px;
+    font-size: 0.86rem;
+    color: var(--subtle);
+}
+
+.metric {
+    font-family: var(--font-data);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.metric .icon {
+    font-size: 1rem;
+    opacity: 0.85;
+    color: rgba(168, 85, 247, var(--glow-opacity));
+}
+
+.badge {
+    align-self: flex-start;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0f172a;
+    background: linear-gradient(120deg, rgba(249, 115, 22, 0.95), rgba(168, 85, 247, 0.9));
+    box-shadow: 0 6px 18px rgba(249, 115, 22, 0.35);
+}
+
+.side-card h2,
+.side-card h3,
+.post-body strong {
+    font-family: var(--font-heading);
+    letter-spacing: 0.1em;
+}
+
+.post-body strong {
+    font-size: 1.24rem;
+}

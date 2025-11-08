@@ -1,0 +1,23 @@
+:root {
+    --bg: #04040d;
+    --panel: rgba(10, 10, 26, 0.8);
+    --panel-border: rgba(148, 62, 255, 0.25);
+    --accent: #a855f7;
+    --text: #f8f7ff;
+    --subtle: #9ca3af;
+    --card: rgba(24, 24, 45, 0.88);
+    --gap: 32px;
+    --font-heading: "Space Grotesk", "Arial Black", sans-serif;
+    --font-body: "Inter", "Segoe UI", sans-serif;
+    --font-data: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+    --canvas-gradient: radial-gradient(circle at 20% 20%, #0f172a 0%, #111827 45%, #02010a 100%);
+    --low-power-gradient: linear-gradient(135deg, #04070f 0%, #0e1a2c 100%);
+    --surface-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cg fill='%23ffffff' fill-opacity='.04'%3E%3Cpath d='M1 0h1v1H1zM5 1h1v1H5zM3 3h1v1H3zM7 4h1v1H7zM0 5h1v1H0zM4 6h1v1H4zM2 7h1v1H2z'/%3E%3C/g%3E%3C/svg%3E");
+    --texture-size: 160px;
+    --glow-primary: rgba(168, 85, 247, 0.45);
+    --glow-secondary: rgba(59, 130, 246, 0.35);
+    --panel-overlay: linear-gradient(145deg, rgba(15, 23, 42, 0.82), rgba(15, 36, 58, 0.68));
+    --accent-soft: rgba(168, 85, 247, 0.22);
+    --motion-scale: 1;
+    --glow-opacity: 0.7;
+}

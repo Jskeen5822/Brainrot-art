@@ -1,0 +1,9 @@
+:root.low-power-mode {
+    --motion-scale: 0.6;
+    --glow-opacity: 0.5;
+}
+
+body.low-power {
+    --motion-scale: 0.5;
+    --glow-opacity: 0.45;
+}

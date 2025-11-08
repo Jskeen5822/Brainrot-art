@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #02010a;
+    background-image: var(--canvas-gradient), var(--surface-texture);
+    background-size: cover, var(--texture-size);
+    background-repeat: no-repeat, repeat;
+    background-position: center, top left;
+}
